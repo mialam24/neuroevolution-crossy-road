@@ -1,27 +1,25 @@
-import pyautogui
 import time
 import numpy
 import cv2
-import subprocess
 from scipy import misc
+import mss
 
-# Constants
-DIM_X = 432
-DIM_Y = 240
-CLICK_X = DIM_X/2
-CLICK_Y = DIM_Y/2
+import constants_crossy_road as const
+import movement_crossy_road as move
+import process_image_crossy_road as process_image
+
+MONITOR = {'top': const.Y_OFFSET, 'left': 0, 'width': const.DIM_X, 'height': const.DIM_Y}
 
 for i in range(5, 0, -1):
     print(i)
     time.sleep(1)
 
-# pyautogui.click(CLICK_X, CLICK_Y, clicks=10000, interval=0.5)
+sct = mss.mss()
 
 while(True):
     last_time = time.time()
 
-    subprocess.run("adb shell screencap -p | sed 's/\r$//' > screenshot.png", shell=True, check=True)
-    raw_img = misc.imread('screenshot.png')
+    raw_img = numpy.array(sct.grab(MONITOR))
 
     # Display the picture
     # cv2.imshow('OpenCV/Numpy normal', img)
