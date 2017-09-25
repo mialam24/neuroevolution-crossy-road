@@ -8,6 +8,7 @@ score = 0
 
 def forward():
     pyautogui.click(const.MID_X, const.MID_Y)
+    time.sleep(const.DRAG_TIME)
 
     global dist
     global score
@@ -32,7 +33,7 @@ def backward():
 def restart():
     pyautogui.click(x = const.PLAY_BUTTON_X, y = const.PLAY_BUTTON_Y)
     time.sleep(const.WAIT_SCREEN)
-    forward()
+    pyautogui.click(const.MID_X, const.MID_Y)
 
     global dist
     global score 
