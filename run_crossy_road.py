@@ -17,17 +17,28 @@ MONITOR = {'top': const.Y_OFFSET, 'left': 0, 'width': const.DIM_X, 'height': con
 sct = mss.mss()
 
 while(True):
-    last_time = time.time()
-
     raw_img = np.array(sct.grab(MONITOR))
 
-    rotated_img = process_image.rotate_and_scale(raw_img, const.ROTATION_ANGLE, const.SCALE_FACTOR)
+    last_time = time.time()
 
-    cv2.imshow('Processed Image', rotated_img)
+    rotated_img = process_image.rotate(raw_img, const.ROTATION_ANGLE)
+    affine_img = process_image.affine_transform(rotated_img)
 
-    print('fps: {0}'.format(1 / (time.time()-last_time)))
+    rows, cols, ch = affine_img.shape
+
+    for i in range(1, cols // 26 + 1):
+        cv2.line(affine_img, (i * 26 - 4, 0), (i * 26 - 4, rows), (255, 0, 0), 1)
+    for i in range(1, rows // 26 + 1):
+        cv2.line(affine_img, (0, i * 26), (cols, i * 26), (255, 0, 0), 1)
+
+    cv2.imshow('Processed Image', affine_img)
 
     # Press "q" to quit
-    if cv2.waitKey(25) & 0xFF == ord('q'):
+    if cv2.waitKey(1) & 0xFF == ord('q'):
         cv2.destroyAllWindows()
         break
+
+    # while(time.time()-last_time < 1./60):
+    #     time.sleep(0.0001)
+
+    print('fps: {0}'.format(1 / (time.time()-last_time)))
