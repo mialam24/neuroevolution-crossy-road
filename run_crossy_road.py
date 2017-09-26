@@ -28,7 +28,7 @@ while(True):
         cv2.destroyAllWindows()
         break
 
-    # while(time.time()-last_time < 1./30):
-    #     time.sleep(0.0001)
+    while(time.time()-last_time < const.PRESS_TIME):
+        time.sleep(0.0001)
 
-    print('fps: {0}'.format(1 / (time.time()-last_time)))
+    # print('fps: {0}'.format(1 / (time.time()-last_time)))

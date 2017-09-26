@@ -11,9 +11,11 @@ def process(img):
     adj_img = adjust_size(affine_img, const.BLOCK_X, const.BLOCK_Y)
     shifted_img = shift_image(adj_img, -4, -10)
 
-    final_img, final_arr = proc_cy.binarify(shifted_img, const.BLOCK_X, const.BLOCK_Y, const.COLOR_LIST_FLOOR)
+    bin_img, bin_arr = proc_cy.binarify(shifted_img, const.BLOCK_X, const.BLOCK_Y, const.COLOR_LIST_FLOOR)
 
-    return final_img, final_arr
+    marked_img = mark_chicken(bin_img, const.BLOCK_X, const.BLOCK_Y, const.HOME_CELL_X, const.HOME_CELL_Y)
+
+    return marked_img, bin_arr
 
 def rotate(img, angle):
     old_Y, old_X, ch = img.shape 
@@ -63,13 +65,21 @@ def shift_image(img, shift_x, shift_y):
 
     return shifted_img
 
+def mark_chicken(img, block_x, block_y, home_x, home_y):
+    mark_x = block_x * home_x + block_x // 2
+    mark_y = block_y * home_y + block_y // 2
+
+    marked_img = cv2.circle(img, (mark_x, mark_y), 5, [0, 255, 0], -1)
+
+    return marked_img
+
 if __name__ == '__main__':
     with mss.mss() as sct:
         raw_img = np.array(sct.grab(const.MONITOR))
 
     processed_img, processed_arr = process(raw_img)
 
-    print(processed_arr)
+    # print(processed_arr)
     cv2.imshow('Processed Image', processed_img)
 
     while(True):

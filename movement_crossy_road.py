@@ -7,8 +7,9 @@ dist = 0
 score = 0
 
 def forward():
-    pyautogui.click(const.MID_X, const.MID_Y)
-    time.sleep(const.DRAG_TIME)
+    pyautogui.keyDown('up')
+    time.sleep(const.PRESS_TIME)
+    pyautogui.keyUp('up')
 
     global dist
     global score
@@ -16,16 +17,19 @@ def forward():
     score = max(score, dist)
 
 def left():
-    pyautogui.moveTo(const.MID_X, const.MID_Y)
-    pyautogui.dragRel(-const.DRAG_OFFSET, 0, const.DRAG_TIME, button='left')
+    pyautogui.keyDown('left')
+    time.sleep(const.PRESS_TIME)
+    pyautogui.keyUp('left')
 
 def right():
-    pyautogui.moveTo(const.MID_X, const.MID_Y)
-    pyautogui.dragRel(const.DRAG_OFFSET, 0, const.DRAG_TIME, button='left')
+    pyautogui.keyDown('right')
+    time.sleep(const.PRESS_TIME)
+    pyautogui.keyUp('right')
 
 def backward():
-    pyautogui.moveTo(const.MID_X, const.MID_Y)
-    pyautogui.dragRel(0, const.DRAG_OFFSET, const.DRAG_TIME, button='left')
+    pyautogui.keyDown('down')
+    time.sleep(const.PRESS_TIME)
+    pyautogui.keyUp('down')
 
     global dist
     dist -= 1
@@ -33,7 +37,7 @@ def backward():
 def restart():
     pyautogui.click(x = const.PLAY_BUTTON_X, y = const.PLAY_BUTTON_Y)
     time.sleep(const.WAIT_SCREEN)
-    pyautogui.click(const.MID_X, const.MID_Y)
+    pyautogui.click(5 + const.X_OFFSET, -20 + const.DIM_Y + const.Y_OFFSET)
 
     global dist
     global score 
@@ -42,3 +46,11 @@ def restart():
 
 def get_score():
     return score
+
+if __name__ == '__main__':
+    restart()
+    left()
+    right()
+    backward()
+    forward()
+    print(get_score())

@@ -11,10 +11,10 @@ def binarify(img, int block_x, int block_y, int [:,:] color_list):
     for y in range(block_x // 2, rows, block_x):
         for x in range(block_y // 2, cols, block_y):
             if(is_floor(img[y,x], color_list)):
-                cv2.circle(img, (x, y), 5, [255, 0, 0], -1) 
+                cv2.circle(img, (x, y), 3, [255, 0, 0], -1) 
                 arr.append(1)
             else:
-                cv2.circle(img, (x, y), 5, [0, 0, 255], -1) 
+                cv2.circle(img, (x, y), 3, [0, 0, 255], -1) 
                 arr.append(0)
 
     for i in range(1, cols // block_y + 1):

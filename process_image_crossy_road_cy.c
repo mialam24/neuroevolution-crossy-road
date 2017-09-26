@@ -1843,7 +1843,7 @@ static PyObject *__pyx_tp_new_memoryview(PyTypeObject *t, PyObject *a, PyObject 
 static PyObject *__pyx_tp_new__memoryviewslice(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
-static PyObject *__pyx_int_5;
+static PyObject *__pyx_int_3;
 static PyObject *__pyx_int_255;
 static PyObject *__pyx_int_184977713;
 static PyObject *__pyx_int_neg_1;
@@ -2166,7 +2166,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
  *     for y in range(block_x // 2, rows, block_x):
  *         for x in range(block_y // 2, cols, block_y):             # <<<<<<<<<<<<<<
  *             if(is_floor(img[y,x], color_list)):
- *                 cv2.circle(img, (x, y), 5, [255, 0, 0], -1)
+ *                 cv2.circle(img, (x, y), 3, [255, 0, 0], -1)
  */
     __pyx_t_3 = __Pyx_PyInt_From_long(__Pyx_div_long(__pyx_v_block_y, 2)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
@@ -2236,7 +2236,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
  *     for y in range(block_x // 2, rows, block_x):
  *         for x in range(block_y // 2, cols, block_y):
  *             if(is_floor(img[y,x], color_list)):             # <<<<<<<<<<<<<<
- *                 cv2.circle(img, (x, y), 5, [255, 0, 0], -1)
+ *                 cv2.circle(img, (x, y), 3, [255, 0, 0], -1)
  *                 arr.append(1)
  */
       __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
@@ -2266,7 +2266,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
         /* "process_image_crossy_road_cy.pyx":14
  *         for x in range(block_y // 2, cols, block_y):
  *             if(is_floor(img[y,x], color_list)):
- *                 cv2.circle(img, (x, y), 5, [255, 0, 0], -1)             # <<<<<<<<<<<<<<
+ *                 cv2.circle(img, (x, y), 3, [255, 0, 0], -1)             # <<<<<<<<<<<<<<
  *                 arr.append(1)
  *             else:
  */
@@ -2312,7 +2312,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
         }
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_1)) {
-          PyObject *__pyx_temp[6] = {__pyx_t_3, __pyx_v_img, __pyx_t_17, __pyx_int_5, __pyx_t_16, __pyx_int_neg_1};
+          PyObject *__pyx_temp[6] = {__pyx_t_3, __pyx_v_img, __pyx_t_17, __pyx_int_3, __pyx_t_16, __pyx_int_neg_1};
           __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_9, 5+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 14, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_GOTREF(__pyx_t_4);
@@ -2322,7 +2322,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
         #endif
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
-          PyObject *__pyx_temp[6] = {__pyx_t_3, __pyx_v_img, __pyx_t_17, __pyx_int_5, __pyx_t_16, __pyx_int_neg_1};
+          PyObject *__pyx_temp[6] = {__pyx_t_3, __pyx_v_img, __pyx_t_17, __pyx_int_3, __pyx_t_16, __pyx_int_neg_1};
           __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_9, 5+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 14, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_GOTREF(__pyx_t_4);
@@ -2341,9 +2341,9 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
           PyTuple_SET_ITEM(__pyx_t_18, 0+__pyx_t_9, __pyx_v_img);
           __Pyx_GIVEREF(__pyx_t_17);
           PyTuple_SET_ITEM(__pyx_t_18, 1+__pyx_t_9, __pyx_t_17);
-          __Pyx_INCREF(__pyx_int_5);
-          __Pyx_GIVEREF(__pyx_int_5);
-          PyTuple_SET_ITEM(__pyx_t_18, 2+__pyx_t_9, __pyx_int_5);
+          __Pyx_INCREF(__pyx_int_3);
+          __Pyx_GIVEREF(__pyx_int_3);
+          PyTuple_SET_ITEM(__pyx_t_18, 2+__pyx_t_9, __pyx_int_3);
           __Pyx_GIVEREF(__pyx_t_16);
           PyTuple_SET_ITEM(__pyx_t_18, 3+__pyx_t_9, __pyx_t_16);
           __Pyx_INCREF(__pyx_int_neg_1);
@@ -2360,10 +2360,10 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
 
         /* "process_image_crossy_road_cy.pyx":15
  *             if(is_floor(img[y,x], color_list)):
- *                 cv2.circle(img, (x, y), 5, [255, 0, 0], -1)
+ *                 cv2.circle(img, (x, y), 3, [255, 0, 0], -1)
  *                 arr.append(1)             # <<<<<<<<<<<<<<
  *             else:
- *                 cv2.circle(img, (x, y), 5, [0, 0, 255], -1)
+ *                 cv2.circle(img, (x, y), 3, [0, 0, 255], -1)
  */
         __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_arr, __pyx_int_1); if (unlikely(__pyx_t_19 == -1)) __PYX_ERR(0, 15, __pyx_L1_error)
 
@@ -2371,7 +2371,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
  *     for y in range(block_x // 2, rows, block_x):
  *         for x in range(block_y // 2, cols, block_y):
  *             if(is_floor(img[y,x], color_list)):             # <<<<<<<<<<<<<<
- *                 cv2.circle(img, (x, y), 5, [255, 0, 0], -1)
+ *                 cv2.circle(img, (x, y), 3, [255, 0, 0], -1)
  *                 arr.append(1)
  */
         goto __pyx_L9;
@@ -2380,7 +2380,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
       /* "process_image_crossy_road_cy.pyx":17
  *                 arr.append(1)
  *             else:
- *                 cv2.circle(img, (x, y), 5, [0, 0, 255], -1)             # <<<<<<<<<<<<<<
+ *                 cv2.circle(img, (x, y), 3, [0, 0, 255], -1)             # <<<<<<<<<<<<<<
  *                 arr.append(0)
  * 
  */
@@ -2427,7 +2427,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
         }
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_18)) {
-          PyObject *__pyx_temp[6] = {__pyx_t_1, __pyx_v_img, __pyx_t_17, __pyx_int_5, __pyx_t_16, __pyx_int_neg_1};
+          PyObject *__pyx_temp[6] = {__pyx_t_1, __pyx_v_img, __pyx_t_17, __pyx_int_3, __pyx_t_16, __pyx_int_neg_1};
           __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_9, 5+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_4);
@@ -2437,7 +2437,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
         #endif
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_18)) {
-          PyObject *__pyx_temp[6] = {__pyx_t_1, __pyx_v_img, __pyx_t_17, __pyx_int_5, __pyx_t_16, __pyx_int_neg_1};
+          PyObject *__pyx_temp[6] = {__pyx_t_1, __pyx_v_img, __pyx_t_17, __pyx_int_3, __pyx_t_16, __pyx_int_neg_1};
           __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_9, 5+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_4);
@@ -2456,9 +2456,9 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
           PyTuple_SET_ITEM(__pyx_t_3, 0+__pyx_t_9, __pyx_v_img);
           __Pyx_GIVEREF(__pyx_t_17);
           PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_9, __pyx_t_17);
-          __Pyx_INCREF(__pyx_int_5);
-          __Pyx_GIVEREF(__pyx_int_5);
-          PyTuple_SET_ITEM(__pyx_t_3, 2+__pyx_t_9, __pyx_int_5);
+          __Pyx_INCREF(__pyx_int_3);
+          __Pyx_GIVEREF(__pyx_int_3);
+          PyTuple_SET_ITEM(__pyx_t_3, 2+__pyx_t_9, __pyx_int_3);
           __Pyx_GIVEREF(__pyx_t_16);
           PyTuple_SET_ITEM(__pyx_t_3, 3+__pyx_t_9, __pyx_t_16);
           __Pyx_INCREF(__pyx_int_neg_1);
@@ -2475,7 +2475,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
 
         /* "process_image_crossy_road_cy.pyx":18
  *             else:
- *                 cv2.circle(img, (x, y), 5, [0, 0, 255], -1)
+ *                 cv2.circle(img, (x, y), 3, [0, 0, 255], -1)
  *                 arr.append(0)             # <<<<<<<<<<<<<<
  * 
  *     for i in range(1, cols // block_y + 1):
@@ -2489,7 +2489,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
  *     for y in range(block_x // 2, rows, block_x):
  *         for x in range(block_y // 2, cols, block_y):             # <<<<<<<<<<<<<<
  *             if(is_floor(img[y,x], color_list)):
- *                 cv2.circle(img, (x, y), 5, [255, 0, 0], -1)
+ *                 cv2.circle(img, (x, y), 3, [255, 0, 0], -1)
  */
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -16976,7 +16976,7 @@ static int __Pyx_InitGlobals(void) {
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_int_5 = PyInt_FromLong(5); if (unlikely(!__pyx_int_5)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_3 = PyInt_FromLong(3); if (unlikely(!__pyx_int_3)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_255 = PyInt_FromLong(255); if (unlikely(!__pyx_int_255)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_184977713 = PyInt_FromLong(184977713L); if (unlikely(!__pyx_int_184977713)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_neg_1 = PyInt_FromLong(-1); if (unlikely(!__pyx_int_neg_1)) __PYX_ERR(0, 1, __pyx_L1_error)
