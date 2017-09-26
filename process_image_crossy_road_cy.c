@@ -1546,7 +1546,6 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static int __pyx_f_28process_image_crossy_road_cy_is_chicken(__Pyx_memviewslice, __Pyx_memviewslice); /*proto*/
 static int __pyx_f_28process_image_crossy_road_cy_is_floor(__Pyx_memviewslice, __Pyx_memviewslice); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
 static void *__pyx_align_pointer(void *, size_t); /*proto*/
@@ -1661,10 +1660,8 @@ static const char __pyx_k_pyx_result[] = "__pyx_result";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_MemoryError[] = "MemoryError";
 static const char __pyx_k_PickleError[] = "PickleError";
-static const char __pyx_k_chicken_num[] = "chicken_num";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_stringsource[] = "stringsource";
-static const char __pyx_k_color_chicken[] = "color_chicken";
 static const char __pyx_k_pyx_getbuffer[] = "__pyx_getbuffer";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_View_MemoryView[] = "View.MemoryView";
@@ -1728,11 +1725,9 @@ static PyObject *__pyx_n_s_block_y;
 static PyObject *__pyx_n_s_c;
 static PyObject *__pyx_n_u_c;
 static PyObject *__pyx_n_s_ch;
-static PyObject *__pyx_n_s_chicken_num;
 static PyObject *__pyx_n_s_circle;
 static PyObject *__pyx_n_s_class;
 static PyObject *__pyx_n_s_cline_in_traceback;
-static PyObject *__pyx_n_s_color_chicken;
 static PyObject *__pyx_n_s_color_list;
 static PyObject *__pyx_n_s_cols;
 static PyObject *__pyx_kp_s_contiguous_and_direct;
@@ -1803,7 +1798,7 @@ static PyObject *__pyx_n_s_unpack;
 static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_x;
 static PyObject *__pyx_n_s_y;
-static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_img, int __pyx_v_block_x, int __pyx_v_block_y, __Pyx_memviewslice __pyx_v_color_chicken, __Pyx_memviewslice __pyx_v_color_list, PyObject *__pyx_v_chicken_num, PyObject *__pyx_v_floor_num, PyObject *__pyx_v_death_num); /* proto */
+static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_img, int __pyx_v_block_x, int __pyx_v_block_y, __Pyx_memviewslice __pyx_v_color_list, PyObject *__pyx_v_floor_num, PyObject *__pyx_v_death_num); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(struct __pyx_array_obj *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_array___pyx_pf_15View_dot_MemoryView_5array_4__dealloc__(struct __pyx_array_obj *__pyx_v_self); /* proto */
@@ -1853,7 +1848,6 @@ static PyObject *__pyx_tp_new__memoryviewslice(PyTypeObject *t, PyObject *a, PyO
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_3;
-static PyObject *__pyx_int_5;
 static PyObject *__pyx_int_255;
 static PyObject *__pyx_int_184977713;
 static PyObject *__pyx_int_neg_1;
@@ -1891,7 +1885,7 @@ static PyObject *__pyx_codeobj__30;
 /* "process_image_crossy_road_cy.pyx":5
  * 
  * @cython.boundscheck(False)
- * def binarify(img, int block_x, int block_y, int[:,:] color_chicken, int [:,:] color_list, chicken_num, floor_num, death_num):             # <<<<<<<<<<<<<<
+ * def binarify(img, int block_x, int block_y, int [:,:] color_list, floor_num, death_num):             # <<<<<<<<<<<<<<
  *     arr = []
  *     cdef int rows, cols, ch
  */
@@ -1903,25 +1897,19 @@ static PyObject *__pyx_pw_28process_image_crossy_road_cy_1binarify(PyObject *__p
   PyObject *__pyx_v_img = 0;
   int __pyx_v_block_x;
   int __pyx_v_block_y;
-  __Pyx_memviewslice __pyx_v_color_chicken = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_color_list = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_v_chicken_num = 0;
   PyObject *__pyx_v_floor_num = 0;
   PyObject *__pyx_v_death_num = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("binarify (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_img,&__pyx_n_s_block_x,&__pyx_n_s_block_y,&__pyx_n_s_color_chicken,&__pyx_n_s_color_list,&__pyx_n_s_chicken_num,&__pyx_n_s_floor_num,&__pyx_n_s_death_num,0};
-    PyObject* values[8] = {0,0,0,0,0,0,0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_img,&__pyx_n_s_block_x,&__pyx_n_s_block_y,&__pyx_n_s_color_list,&__pyx_n_s_floor_num,&__pyx_n_s_death_num,0};
+    PyObject* values[6] = {0,0,0,0,0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
-        case  8: values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
-        CYTHON_FALLTHROUGH;
-        case  7: values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
-        CYTHON_FALLTHROUGH;
         case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
         CYTHON_FALLTHROUGH;
         case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
@@ -1946,49 +1934,37 @@ static PyObject *__pyx_pw_28process_image_crossy_road_cy_1binarify(PyObject *__p
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_block_x)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("binarify", 1, 8, 8, 1); __PYX_ERR(0, 5, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("binarify", 1, 6, 6, 1); __PYX_ERR(0, 5, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_block_y)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("binarify", 1, 8, 8, 2); __PYX_ERR(0, 5, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("binarify", 1, 6, 6, 2); __PYX_ERR(0, 5, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
-        if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_color_chicken)) != 0)) kw_args--;
+        if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_color_list)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("binarify", 1, 8, 8, 3); __PYX_ERR(0, 5, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("binarify", 1, 6, 6, 3); __PYX_ERR(0, 5, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
-        if (likely((values[4] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_color_list)) != 0)) kw_args--;
+        if (likely((values[4] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_floor_num)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("binarify", 1, 8, 8, 4); __PYX_ERR(0, 5, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("binarify", 1, 6, 6, 4); __PYX_ERR(0, 5, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
-        if (likely((values[5] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_chicken_num)) != 0)) kw_args--;
+        if (likely((values[5] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_death_num)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("binarify", 1, 8, 8, 5); __PYX_ERR(0, 5, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  6:
-        if (likely((values[6] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_floor_num)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("binarify", 1, 8, 8, 6); __PYX_ERR(0, 5, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  7:
-        if (likely((values[7] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_death_num)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("binarify", 1, 8, 8, 7); __PYX_ERR(0, 5, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("binarify", 1, 6, 6, 5); __PYX_ERR(0, 5, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "binarify") < 0)) __PYX_ERR(0, 5, __pyx_L3_error)
       }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 8) {
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 6) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
@@ -1997,34 +1973,30 @@ static PyObject *__pyx_pw_28process_image_crossy_road_cy_1binarify(PyObject *__p
       values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
       values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
       values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
-      values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
-      values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
     }
     __pyx_v_img = values[0];
     __pyx_v_block_x = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_block_x == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 5, __pyx_L3_error)
     __pyx_v_block_y = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_block_y == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 5, __pyx_L3_error)
-    __pyx_v_color_chicken = __Pyx_PyObject_to_MemoryviewSlice_dsds_int(values[3]); if (unlikely(!__pyx_v_color_chicken.memview)) __PYX_ERR(0, 5, __pyx_L3_error)
-    __pyx_v_color_list = __Pyx_PyObject_to_MemoryviewSlice_dsds_int(values[4]); if (unlikely(!__pyx_v_color_list.memview)) __PYX_ERR(0, 5, __pyx_L3_error)
-    __pyx_v_chicken_num = values[5];
-    __pyx_v_floor_num = values[6];
-    __pyx_v_death_num = values[7];
+    __pyx_v_color_list = __Pyx_PyObject_to_MemoryviewSlice_dsds_int(values[3]); if (unlikely(!__pyx_v_color_list.memview)) __PYX_ERR(0, 5, __pyx_L3_error)
+    __pyx_v_floor_num = values[4];
+    __pyx_v_death_num = values[5];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("binarify", 1, 8, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 5, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("binarify", 1, 6, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 5, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("process_image_crossy_road_cy.binarify", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_28process_image_crossy_road_cy_binarify(__pyx_self, __pyx_v_img, __pyx_v_block_x, __pyx_v_block_y, __pyx_v_color_chicken, __pyx_v_color_list, __pyx_v_chicken_num, __pyx_v_floor_num, __pyx_v_death_num);
+  __pyx_r = __pyx_pf_28process_image_crossy_road_cy_binarify(__pyx_self, __pyx_v_img, __pyx_v_block_x, __pyx_v_block_y, __pyx_v_color_list, __pyx_v_floor_num, __pyx_v_death_num);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_img, int __pyx_v_block_x, int __pyx_v_block_y, __Pyx_memviewslice __pyx_v_color_chicken, __Pyx_memviewslice __pyx_v_color_list, PyObject *__pyx_v_chicken_num, PyObject *__pyx_v_floor_num, PyObject *__pyx_v_death_num) {
+static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_img, int __pyx_v_block_x, int __pyx_v_block_y, __Pyx_memviewslice __pyx_v_color_list, PyObject *__pyx_v_floor_num, PyObject *__pyx_v_death_num) {
   PyObject *__pyx_v_arr = NULL;
   int __pyx_v_rows;
   int __pyx_v_cols;
@@ -2058,7 +2030,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
 
   /* "process_image_crossy_road_cy.pyx":6
  * @cython.boundscheck(False)
- * def binarify(img, int block_x, int block_y, int[:,:] color_chicken, int [:,:] color_list, chicken_num, floor_num, death_num):
+ * def binarify(img, int block_x, int block_y, int [:,:] color_list, floor_num, death_num):
  *     arr = []             # <<<<<<<<<<<<<<
  *     cdef int rows, cols, ch
  *     rows, cols, ch = img.shape
@@ -2322,7 +2294,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
  *             if(is_floor(img[y,x], color_list)):
  *                 cv2.circle(img, (x, y), 3, [255, 0, 0], -1)             # <<<<<<<<<<<<<<
  *                 arr.append(floor_num)
- *             elif(is_chicken(img[y,x], color_chicken)):
+ *             else:
  */
         __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_cv2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
@@ -2416,8 +2388,8 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
  *             if(is_floor(img[y,x], color_list)):
  *                 cv2.circle(img, (x, y), 3, [255, 0, 0], -1)
  *                 arr.append(floor_num)             # <<<<<<<<<<<<<<
- *             elif(is_chicken(img[y,x], color_chicken)):
- *                 cv2.circle(img, (x, y), 5, [0, 255, 0], -1)
+ *             else:
+ *                 cv2.circle(img, (x, y), 3, [0, 0, 255], -1)
  */
         __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_arr, __pyx_v_floor_num); if (unlikely(__pyx_t_19 == -1)) __PYX_ERR(0, 15, __pyx_L1_error)
 
@@ -2431,177 +2403,32 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
         goto __pyx_L9;
       }
 
-      /* "process_image_crossy_road_cy.pyx":16
- *                 cv2.circle(img, (x, y), 3, [255, 0, 0], -1)
+      /* "process_image_crossy_road_cy.pyx":17
  *                 arr.append(floor_num)
- *             elif(is_chicken(img[y,x], color_chicken)):             # <<<<<<<<<<<<<<
- *                 cv2.circle(img, (x, y), 5, [0, 255, 0], -1)
- *                 arr.append(chicken_num)
- */
-      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 16, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_18 = PyTuple_New(2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 16, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_18);
-      __Pyx_GIVEREF(__pyx_t_4);
-      PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_4);
-      __Pyx_GIVEREF(__pyx_t_1);
-      PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_t_1);
-      __pyx_t_4 = 0;
-      __pyx_t_1 = 0;
-      __pyx_t_1 = PyObject_GetItem(__pyx_v_img, __pyx_t_18); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-      __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char(__pyx_t_1);
-      if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 16, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_15 = (__pyx_f_28process_image_crossy_road_cy_is_chicken(__pyx_t_14, __pyx_v_color_chicken) != 0);
-      __PYX_XDEC_MEMVIEW(&__pyx_t_14, 1);
-      __pyx_t_14.memview = NULL;
-      __pyx_t_14.data = NULL;
-      if (__pyx_t_15) {
-
-        /* "process_image_crossy_road_cy.pyx":17
- *                 arr.append(floor_num)
- *             elif(is_chicken(img[y,x], color_chicken)):
- *                 cv2.circle(img, (x, y), 5, [0, 255, 0], -1)             # <<<<<<<<<<<<<<
- *                 arr.append(chicken_num)
- *             else:
- */
-        __pyx_t_18 = __Pyx_GetModuleGlobalName(__pyx_n_s_cv2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_18);
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_circle); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-        __pyx_t_18 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_18);
-        __pyx_t_16 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_16);
-        __pyx_t_17 = PyTuple_New(2); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_17);
-        __Pyx_GIVEREF(__pyx_t_18);
-        PyTuple_SET_ITEM(__pyx_t_17, 0, __pyx_t_18);
-        __Pyx_GIVEREF(__pyx_t_16);
-        PyTuple_SET_ITEM(__pyx_t_17, 1, __pyx_t_16);
-        __pyx_t_18 = 0;
-        __pyx_t_16 = 0;
-        __pyx_t_16 = PyList_New(3); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_16);
-        __Pyx_INCREF(__pyx_int_0);
-        __Pyx_GIVEREF(__pyx_int_0);
-        PyList_SET_ITEM(__pyx_t_16, 0, __pyx_int_0);
-        __Pyx_INCREF(__pyx_int_255);
-        __Pyx_GIVEREF(__pyx_int_255);
-        PyList_SET_ITEM(__pyx_t_16, 1, __pyx_int_255);
-        __Pyx_INCREF(__pyx_int_0);
-        __Pyx_GIVEREF(__pyx_int_0);
-        PyList_SET_ITEM(__pyx_t_16, 2, __pyx_int_0);
-        __pyx_t_18 = NULL;
-        __pyx_t_9 = 0;
-        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
-          __pyx_t_18 = PyMethod_GET_SELF(__pyx_t_4);
-          if (likely(__pyx_t_18)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-            __Pyx_INCREF(__pyx_t_18);
-            __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_4, function);
-            __pyx_t_9 = 1;
-          }
-        }
-        #if CYTHON_FAST_PYCALL
-        if (PyFunction_Check(__pyx_t_4)) {
-          PyObject *__pyx_temp[6] = {__pyx_t_18, __pyx_v_img, __pyx_t_17, __pyx_int_5, __pyx_t_16, __pyx_int_neg_1};
-          __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_9, 5+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
-          __Pyx_GOTREF(__pyx_t_1);
-          __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-          __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-        } else
-        #endif
-        #if CYTHON_FAST_PYCCALL
-        if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
-          PyObject *__pyx_temp[6] = {__pyx_t_18, __pyx_v_img, __pyx_t_17, __pyx_int_5, __pyx_t_16, __pyx_int_neg_1};
-          __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_9, 5+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
-          __Pyx_GOTREF(__pyx_t_1);
-          __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-          __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-        } else
-        #endif
-        {
-          __pyx_t_3 = PyTuple_New(5+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_3);
-          if (__pyx_t_18) {
-            __Pyx_GIVEREF(__pyx_t_18); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_18); __pyx_t_18 = NULL;
-          }
-          __Pyx_INCREF(__pyx_v_img);
-          __Pyx_GIVEREF(__pyx_v_img);
-          PyTuple_SET_ITEM(__pyx_t_3, 0+__pyx_t_9, __pyx_v_img);
-          __Pyx_GIVEREF(__pyx_t_17);
-          PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_9, __pyx_t_17);
-          __Pyx_INCREF(__pyx_int_5);
-          __Pyx_GIVEREF(__pyx_int_5);
-          PyTuple_SET_ITEM(__pyx_t_3, 2+__pyx_t_9, __pyx_int_5);
-          __Pyx_GIVEREF(__pyx_t_16);
-          PyTuple_SET_ITEM(__pyx_t_3, 3+__pyx_t_9, __pyx_t_16);
-          __Pyx_INCREF(__pyx_int_neg_1);
-          __Pyx_GIVEREF(__pyx_int_neg_1);
-          PyTuple_SET_ITEM(__pyx_t_3, 4+__pyx_t_9, __pyx_int_neg_1);
-          __pyx_t_17 = 0;
-          __pyx_t_16 = 0;
-          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        }
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-        /* "process_image_crossy_road_cy.pyx":18
- *             elif(is_chicken(img[y,x], color_chicken)):
- *                 cv2.circle(img, (x, y), 5, [0, 255, 0], -1)
- *                 arr.append(chicken_num)             # <<<<<<<<<<<<<<
- *             else:
- *                 cv2.circle(img, (x, y), 3, [0, 0, 255], -1)
- */
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_arr, __pyx_v_chicken_num); if (unlikely(__pyx_t_19 == -1)) __PYX_ERR(0, 18, __pyx_L1_error)
-
-        /* "process_image_crossy_road_cy.pyx":16
- *                 cv2.circle(img, (x, y), 3, [255, 0, 0], -1)
- *                 arr.append(floor_num)
- *             elif(is_chicken(img[y,x], color_chicken)):             # <<<<<<<<<<<<<<
- *                 cv2.circle(img, (x, y), 5, [0, 255, 0], -1)
- *                 arr.append(chicken_num)
- */
-        goto __pyx_L9;
-      }
-
-      /* "process_image_crossy_road_cy.pyx":20
- *                 arr.append(chicken_num)
  *             else:
  *                 cv2.circle(img, (x, y), 3, [0, 0, 255], -1)             # <<<<<<<<<<<<<<
  *                 arr.append(death_num)
  * 
  */
       /*else*/ {
-        __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_cv2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_circle); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_16 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 20, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_cv2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_circle); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 17, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_18);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_16 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 17, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_16);
-        __pyx_t_17 = PyTuple_New(2); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 20, __pyx_L1_error)
+        __pyx_t_17 = PyTuple_New(2); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 17, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_17);
-        __Pyx_GIVEREF(__pyx_t_4);
-        PyTuple_SET_ITEM(__pyx_t_17, 0, __pyx_t_4);
+        __Pyx_GIVEREF(__pyx_t_1);
+        PyTuple_SET_ITEM(__pyx_t_17, 0, __pyx_t_1);
         __Pyx_GIVEREF(__pyx_t_16);
         PyTuple_SET_ITEM(__pyx_t_17, 1, __pyx_t_16);
-        __pyx_t_4 = 0;
+        __pyx_t_1 = 0;
         __pyx_t_16 = 0;
-        __pyx_t_16 = PyList_New(3); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 20, __pyx_L1_error)
+        __pyx_t_16 = PyList_New(3); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 17, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_16);
         __Pyx_INCREF(__pyx_int_0);
         __Pyx_GIVEREF(__pyx_int_0);
@@ -2612,74 +2439,74 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
         __Pyx_INCREF(__pyx_int_255);
         __Pyx_GIVEREF(__pyx_int_255);
         PyList_SET_ITEM(__pyx_t_16, 2, __pyx_int_255);
-        __pyx_t_4 = NULL;
+        __pyx_t_1 = NULL;
         __pyx_t_9 = 0;
-        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-          __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-          if (likely(__pyx_t_4)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-            __Pyx_INCREF(__pyx_t_4);
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_18))) {
+          __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_18);
+          if (likely(__pyx_t_1)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_18);
+            __Pyx_INCREF(__pyx_t_1);
             __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_3, function);
+            __Pyx_DECREF_SET(__pyx_t_18, function);
             __pyx_t_9 = 1;
           }
         }
         #if CYTHON_FAST_PYCALL
-        if (PyFunction_Check(__pyx_t_3)) {
-          PyObject *__pyx_temp[6] = {__pyx_t_4, __pyx_v_img, __pyx_t_17, __pyx_int_3, __pyx_t_16, __pyx_int_neg_1};
-          __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 5+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __Pyx_GOTREF(__pyx_t_1);
+        if (PyFunction_Check(__pyx_t_18)) {
+          PyObject *__pyx_temp[6] = {__pyx_t_1, __pyx_v_img, __pyx_t_17, __pyx_int_3, __pyx_t_16, __pyx_int_neg_1};
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_9, 5+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
           __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         } else
         #endif
         #if CYTHON_FAST_PYCCALL
-        if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-          PyObject *__pyx_temp[6] = {__pyx_t_4, __pyx_v_img, __pyx_t_17, __pyx_int_3, __pyx_t_16, __pyx_int_neg_1};
-          __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 5+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __Pyx_GOTREF(__pyx_t_1);
+        if (__Pyx_PyFastCFunction_Check(__pyx_t_18)) {
+          PyObject *__pyx_temp[6] = {__pyx_t_1, __pyx_v_img, __pyx_t_17, __pyx_int_3, __pyx_t_16, __pyx_int_neg_1};
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_9, 5+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
           __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         } else
         #endif
         {
-          __pyx_t_18 = PyTuple_New(5+__pyx_t_9); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 20, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_18);
-          if (__pyx_t_4) {
-            __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_4); __pyx_t_4 = NULL;
+          __pyx_t_3 = PyTuple_New(5+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_3);
+          if (__pyx_t_1) {
+            __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1); __pyx_t_1 = NULL;
           }
           __Pyx_INCREF(__pyx_v_img);
           __Pyx_GIVEREF(__pyx_v_img);
-          PyTuple_SET_ITEM(__pyx_t_18, 0+__pyx_t_9, __pyx_v_img);
+          PyTuple_SET_ITEM(__pyx_t_3, 0+__pyx_t_9, __pyx_v_img);
           __Pyx_GIVEREF(__pyx_t_17);
-          PyTuple_SET_ITEM(__pyx_t_18, 1+__pyx_t_9, __pyx_t_17);
+          PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_9, __pyx_t_17);
           __Pyx_INCREF(__pyx_int_3);
           __Pyx_GIVEREF(__pyx_int_3);
-          PyTuple_SET_ITEM(__pyx_t_18, 2+__pyx_t_9, __pyx_int_3);
+          PyTuple_SET_ITEM(__pyx_t_3, 2+__pyx_t_9, __pyx_int_3);
           __Pyx_GIVEREF(__pyx_t_16);
-          PyTuple_SET_ITEM(__pyx_t_18, 3+__pyx_t_9, __pyx_t_16);
+          PyTuple_SET_ITEM(__pyx_t_3, 3+__pyx_t_9, __pyx_t_16);
           __Pyx_INCREF(__pyx_int_neg_1);
           __Pyx_GIVEREF(__pyx_int_neg_1);
-          PyTuple_SET_ITEM(__pyx_t_18, 4+__pyx_t_9, __pyx_int_neg_1);
+          PyTuple_SET_ITEM(__pyx_t_3, 4+__pyx_t_9, __pyx_int_neg_1);
           __pyx_t_17 = 0;
           __pyx_t_16 = 0;
-          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_18, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_18, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "process_image_crossy_road_cy.pyx":21
+        /* "process_image_crossy_road_cy.pyx":18
  *             else:
  *                 cv2.circle(img, (x, y), 3, [0, 0, 255], -1)
  *                 arr.append(death_num)             # <<<<<<<<<<<<<<
  * 
  *     for i in range(1, cols // block_y + 1):
  */
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_arr, __pyx_v_death_num); if (unlikely(__pyx_t_19 == -1)) __PYX_ERR(0, 21, __pyx_L1_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_arr, __pyx_v_death_num); if (unlikely(__pyx_t_19 == -1)) __PYX_ERR(0, 18, __pyx_L1_error)
       }
       __pyx_L9:;
 
@@ -2703,7 +2530,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "process_image_crossy_road_cy.pyx":23
+  /* "process_image_crossy_road_cy.pyx":20
  *                 arr.append(death_num)
  * 
  *     for i in range(1, cols // block_y + 1):             # <<<<<<<<<<<<<<
@@ -2712,93 +2539,93 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
  */
   if (unlikely(__pyx_v_block_y == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 23, __pyx_L1_error)
+    __PYX_ERR(0, 20, __pyx_L1_error)
   }
   else if (sizeof(int) == sizeof(long) && (!(((int)-1) > 0)) && unlikely(__pyx_v_block_y == (int)-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_cols))) {
     PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-    __PYX_ERR(0, 23, __pyx_L1_error)
+    __PYX_ERR(0, 20, __pyx_L1_error)
   }
   __pyx_t_20 = (__Pyx_div_int(__pyx_v_cols, __pyx_v_block_y) + 1);
   for (__pyx_t_9 = 1; __pyx_t_9 < __pyx_t_20; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "process_image_crossy_road_cy.pyx":24
+    /* "process_image_crossy_road_cy.pyx":21
  * 
  *     for i in range(1, cols // block_y + 1):
  *         cv2.line(img, (i * block_y, 0), (i * block_y, rows), (255, 0, 0), 1)             # <<<<<<<<<<<<<<
  *     for i in range(1, rows // block_x + 1):
  *         cv2.line(img, (0, i * block_x), (cols, i * block_x), (255, 0, 0), 1)
  */
-    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_cv2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_cv2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyInt_From_int((__pyx_v_i * __pyx_v_block_y)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int((__pyx_v_i * __pyx_v_block_y)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_18 = PyTuple_New(2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_18);
     __Pyx_GIVEREF(__pyx_t_5);
-    PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5);
+    PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_5);
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_GIVEREF(__pyx_int_0);
-    PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_int_0);
+    PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_int_0);
     __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyInt_From_int((__pyx_v_i * __pyx_v_block_y)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int((__pyx_v_i * __pyx_v_block_y)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_18 = __Pyx_PyInt_From_int(__pyx_v_rows); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 24, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_18);
-    __pyx_t_16 = PyTuple_New(2); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_rows); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_16 = PyTuple_New(2); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_5);
-    __Pyx_GIVEREF(__pyx_t_18);
-    PyTuple_SET_ITEM(__pyx_t_16, 1, __pyx_t_18);
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_16, 1, __pyx_t_3);
     __pyx_t_5 = 0;
-    __pyx_t_18 = 0;
-    __pyx_t_18 = NULL;
+    __pyx_t_3 = 0;
+    __pyx_t_3 = NULL;
     __pyx_t_8 = 0;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
-      __pyx_t_18 = PyMethod_GET_SELF(__pyx_t_1);
-      if (likely(__pyx_t_18)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-        __Pyx_INCREF(__pyx_t_18);
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_3)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_3);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_1, function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
         __pyx_t_8 = 1;
       }
     }
     #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_1)) {
-      PyObject *__pyx_temp[6] = {__pyx_t_18, __pyx_v_img, __pyx_t_3, __pyx_t_16, __pyx_tuple_, __pyx_int_1};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 5+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
+    if (PyFunction_Check(__pyx_t_4)) {
+      PyObject *__pyx_temp[6] = {__pyx_t_3, __pyx_v_img, __pyx_t_18, __pyx_t_16, __pyx_tuple_, __pyx_int_1};
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_8, 5+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
-      PyObject *__pyx_temp[6] = {__pyx_t_18, __pyx_v_img, __pyx_t_3, __pyx_t_16, __pyx_tuple_, __pyx_int_1};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 5+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
+      PyObject *__pyx_temp[6] = {__pyx_t_3, __pyx_v_img, __pyx_t_18, __pyx_t_16, __pyx_tuple_, __pyx_int_1};
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_8, 5+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(5+__pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(5+__pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 21, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (__pyx_t_18) {
-        __Pyx_GIVEREF(__pyx_t_18); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_18); __pyx_t_18 = NULL;
+      if (__pyx_t_3) {
+        __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
       }
       __Pyx_INCREF(__pyx_v_img);
       __Pyx_GIVEREF(__pyx_v_img);
       PyTuple_SET_ITEM(__pyx_t_5, 0+__pyx_t_8, __pyx_v_img);
-      __Pyx_GIVEREF(__pyx_t_3);
-      PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_8, __pyx_t_3);
+      __Pyx_GIVEREF(__pyx_t_18);
+      PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_8, __pyx_t_18);
       __Pyx_GIVEREF(__pyx_t_16);
       PyTuple_SET_ITEM(__pyx_t_5, 2+__pyx_t_8, __pyx_t_16);
       __Pyx_INCREF(__pyx_tuple_);
@@ -2807,17 +2634,17 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
       __Pyx_INCREF(__pyx_int_1);
       __Pyx_GIVEREF(__pyx_int_1);
       PyTuple_SET_ITEM(__pyx_t_5, 4+__pyx_t_8, __pyx_int_1);
-      __pyx_t_3 = 0;
+      __pyx_t_18 = 0;
       __pyx_t_16 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
 
-  /* "process_image_crossy_road_cy.pyx":25
+  /* "process_image_crossy_road_cy.pyx":22
  *     for i in range(1, cols // block_y + 1):
  *         cv2.line(img, (i * block_y, 0), (i * block_y, rows), (255, 0, 0), 1)
  *     for i in range(1, rows // block_x + 1):             # <<<<<<<<<<<<<<
@@ -2826,57 +2653,57 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
  */
   if (unlikely(__pyx_v_block_x == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 25, __pyx_L1_error)
+    __PYX_ERR(0, 22, __pyx_L1_error)
   }
   else if (sizeof(int) == sizeof(long) && (!(((int)-1) > 0)) && unlikely(__pyx_v_block_x == (int)-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_rows))) {
     PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-    __PYX_ERR(0, 25, __pyx_L1_error)
+    __PYX_ERR(0, 22, __pyx_L1_error)
   }
   __pyx_t_20 = (__Pyx_div_int(__pyx_v_rows, __pyx_v_block_x) + 1);
   for (__pyx_t_9 = 1; __pyx_t_9 < __pyx_t_20; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "process_image_crossy_road_cy.pyx":26
+    /* "process_image_crossy_road_cy.pyx":23
  *         cv2.line(img, (i * block_y, 0), (i * block_y, rows), (255, 0, 0), 1)
  *     for i in range(1, rows // block_x + 1):
  *         cv2.line(img, (0, i * block_x), (cols, i * block_x), (255, 0, 0), 1)             # <<<<<<<<<<<<<<
  * 
  *     return img, arr
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_cv2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_cv2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 23, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_i * __pyx_v_block_x)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_16 = PyTuple_New(2); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyInt_From_int((__pyx_v_i * __pyx_v_block_x)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_16 = PyTuple_New(2); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 23, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_GIVEREF(__pyx_int_0);
     PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_int_0);
-    __Pyx_GIVEREF(__pyx_t_1);
-    PyTuple_SET_ITEM(__pyx_t_16, 1, __pyx_t_1);
-    __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_cols); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyInt_From_int((__pyx_v_i * __pyx_v_block_x)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_18 = PyTuple_New(2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __Pyx_GIVEREF(__pyx_t_4);
+    PyTuple_SET_ITEM(__pyx_t_16, 1, __pyx_t_4);
+    __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_cols); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_18 = __Pyx_PyInt_From_int((__pyx_v_i * __pyx_v_block_x)); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 23, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
-    __Pyx_GIVEREF(__pyx_t_1);
-    PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_1);
-    __Pyx_GIVEREF(__pyx_t_3);
-    PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_t_3);
-    __pyx_t_1 = 0;
-    __pyx_t_3 = 0;
-    __pyx_t_3 = NULL;
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_GIVEREF(__pyx_t_4);
+    PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
+    __Pyx_GIVEREF(__pyx_t_18);
+    PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_18);
+    __pyx_t_4 = 0;
+    __pyx_t_18 = 0;
+    __pyx_t_18 = NULL;
     __pyx_t_8 = 0;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
-      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_5);
-      if (likely(__pyx_t_3)) {
+      __pyx_t_18 = PyMethod_GET_SELF(__pyx_t_5);
+      if (likely(__pyx_t_18)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-        __Pyx_INCREF(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_18);
         __Pyx_INCREF(function);
         __Pyx_DECREF_SET(__pyx_t_5, function);
         __pyx_t_8 = 1;
@@ -2884,54 +2711,54 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
     }
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
-      PyObject *__pyx_temp[6] = {__pyx_t_3, __pyx_v_img, __pyx_t_16, __pyx_t_18, __pyx_tuple__2, __pyx_int_1};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_8, 5+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      PyObject *__pyx_temp[6] = {__pyx_t_18, __pyx_v_img, __pyx_t_16, __pyx_t_3, __pyx_tuple__2, __pyx_int_1};
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_8, 5+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-      __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
-      PyObject *__pyx_temp[6] = {__pyx_t_3, __pyx_v_img, __pyx_t_16, __pyx_t_18, __pyx_tuple__2, __pyx_int_1};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_8, 5+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      PyObject *__pyx_temp[6] = {__pyx_t_18, __pyx_v_img, __pyx_t_16, __pyx_t_3, __pyx_tuple__2, __pyx_int_1};
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_8, 5+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-      __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_1 = PyTuple_New(5+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (__pyx_t_3) {
-        __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3); __pyx_t_3 = NULL;
+      __pyx_t_4 = PyTuple_New(5+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      if (__pyx_t_18) {
+        __Pyx_GIVEREF(__pyx_t_18); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_18); __pyx_t_18 = NULL;
       }
       __Pyx_INCREF(__pyx_v_img);
       __Pyx_GIVEREF(__pyx_v_img);
-      PyTuple_SET_ITEM(__pyx_t_1, 0+__pyx_t_8, __pyx_v_img);
+      PyTuple_SET_ITEM(__pyx_t_4, 0+__pyx_t_8, __pyx_v_img);
       __Pyx_GIVEREF(__pyx_t_16);
-      PyTuple_SET_ITEM(__pyx_t_1, 1+__pyx_t_8, __pyx_t_16);
-      __Pyx_GIVEREF(__pyx_t_18);
-      PyTuple_SET_ITEM(__pyx_t_1, 2+__pyx_t_8, __pyx_t_18);
+      PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_8, __pyx_t_16);
+      __Pyx_GIVEREF(__pyx_t_3);
+      PyTuple_SET_ITEM(__pyx_t_4, 2+__pyx_t_8, __pyx_t_3);
       __Pyx_INCREF(__pyx_tuple__2);
       __Pyx_GIVEREF(__pyx_tuple__2);
-      PyTuple_SET_ITEM(__pyx_t_1, 3+__pyx_t_8, __pyx_tuple__2);
+      PyTuple_SET_ITEM(__pyx_t_4, 3+__pyx_t_8, __pyx_tuple__2);
       __Pyx_INCREF(__pyx_int_1);
       __Pyx_GIVEREF(__pyx_int_1);
-      PyTuple_SET_ITEM(__pyx_t_1, 4+__pyx_t_8, __pyx_int_1);
+      PyTuple_SET_ITEM(__pyx_t_4, 4+__pyx_t_8, __pyx_int_1);
       __pyx_t_16 = 0;
-      __pyx_t_18 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+      __pyx_t_3 = 0;
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
 
-  /* "process_image_crossy_road_cy.pyx":28
+  /* "process_image_crossy_road_cy.pyx":25
  *         cv2.line(img, (0, i * block_x), (cols, i * block_x), (255, 0, 0), 1)
  * 
  *     return img, arr             # <<<<<<<<<<<<<<
@@ -2939,7 +2766,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
  * @cython.boundscheck(False)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_img);
   __Pyx_GIVEREF(__pyx_v_img);
@@ -2954,7 +2781,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
   /* "process_image_crossy_road_cy.pyx":5
  * 
  * @cython.boundscheck(False)
- * def binarify(img, int block_x, int block_y, int[:,:] color_chicken, int [:,:] color_list, chicken_num, floor_num, death_num):             # <<<<<<<<<<<<<<
+ * def binarify(img, int block_x, int block_y, int [:,:] color_list, floor_num, death_num):             # <<<<<<<<<<<<<<
  *     arr = []
  *     cdef int rows, cols, ch
  */
@@ -2974,263 +2801,13 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_arr);
-  __PYX_XDEC_MEMVIEW(&__pyx_v_color_chicken, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_v_color_list, 1);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "process_image_crossy_road_cy.pyx":31
- * 
- * @cython.boundscheck(False)
- * cdef bint is_chicken(unsigned char[:] pixel, int[:,:] color_chicken):             # <<<<<<<<<<<<<<
- *     cdef unsigned char[:] pixel_color = pixel[:3] # pixel has 4 channels
- * 
- */
-
-static int __pyx_f_28process_image_crossy_road_cy_is_chicken(__Pyx_memviewslice __pyx_v_pixel, __Pyx_memviewslice __pyx_v_color_chicken) {
-  __Pyx_memviewslice __pyx_v_pixel_color = { 0, 0, { 0 }, { 0 }, { 0 } };
-  int __pyx_v_i;
-  int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  int __pyx_t_2;
-  Py_ssize_t __pyx_t_3;
-  int __pyx_t_4;
-  Py_ssize_t __pyx_t_5;
-  __Pyx_memviewslice __pyx_t_6 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_t_7;
-  int __pyx_t_8;
-  Py_ssize_t __pyx_t_9;
-  Py_ssize_t __pyx_t_10;
-  Py_ssize_t __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
-  __Pyx_RefNannySetupContext("is_chicken", 0);
-
-  /* "process_image_crossy_road_cy.pyx":32
- * @cython.boundscheck(False)
- * cdef bint is_chicken(unsigned char[:] pixel, int[:,:] color_chicken):
- *     cdef unsigned char[:] pixel_color = pixel[:3] # pixel has 4 channels             # <<<<<<<<<<<<<<
- * 
- *     cdef int i
- */
-  __pyx_t_1.data = __pyx_v_pixel.data;
-  __pyx_t_1.memview = __pyx_v_pixel.memview;
-  __PYX_INC_MEMVIEW(&__pyx_t_1, 0);
-  __pyx_t_2 = -1;
-  if (unlikely(__pyx_memoryview_slice_memviewslice(
-    &__pyx_t_1,
-    __pyx_v_pixel.shape[0], __pyx_v_pixel.strides[0], __pyx_v_pixel.suboffsets[0],
-    0,
-    0,
-    &__pyx_t_2,
-    0,
-    3,
-    0,
-    0,
-    1,
-    0,
-    1) < 0))
-{
-    __PYX_ERR(0, 32, __pyx_L1_error)
-}
-
-__pyx_v_pixel_color = __pyx_t_1;
-  __pyx_t_1.memview = NULL;
-  __pyx_t_1.data = NULL;
-
-  /* "process_image_crossy_road_cy.pyx":35
- * 
- *     cdef int i
- *     for i in range(color_chicken.shape[0]):             # <<<<<<<<<<<<<<
- *         if(pixel_color[0] == color_chicken[i][0] and
- *                 pixel_color[1] == color_chicken[i][1] and
- */
-  __pyx_t_3 = (__pyx_v_color_chicken.shape[0]);
-  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_3; __pyx_t_2+=1) {
-    __pyx_v_i = __pyx_t_2;
-
-    /* "process_image_crossy_road_cy.pyx":36
- *     cdef int i
- *     for i in range(color_chicken.shape[0]):
- *         if(pixel_color[0] == color_chicken[i][0] and             # <<<<<<<<<<<<<<
- *                 pixel_color[1] == color_chicken[i][1] and
- *                 pixel_color[2] == color_chicken[i][2]):
- */
-    __pyx_t_5 = 0;
-    if (__pyx_t_5 < 0) __pyx_t_5 += __pyx_v_pixel_color.shape[0];
-    __pyx_t_6.data = __pyx_v_color_chicken.data;
-    __pyx_t_6.memview = __pyx_v_color_chicken.memview;
-    __PYX_INC_MEMVIEW(&__pyx_t_6, 0);
-    {
-    Py_ssize_t __pyx_tmp_idx = __pyx_v_i;
-    Py_ssize_t __pyx_tmp_shape = __pyx_v_color_chicken.shape[0];
-    Py_ssize_t __pyx_tmp_stride = __pyx_v_color_chicken.strides[0];
-    if (1 && (__pyx_tmp_idx < 0))
-        __pyx_tmp_idx += __pyx_tmp_shape;
-    if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
-        PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
-        __PYX_ERR(0, 36, __pyx_L1_error)
-    }
-        __pyx_t_6.data += __pyx_tmp_idx * __pyx_tmp_stride;
-}
-
-__pyx_t_6.shape[0] = __pyx_v_color_chicken.shape[1];
-__pyx_t_6.strides[0] = __pyx_v_color_chicken.strides[1];
-    __pyx_t_6.suboffsets[0] = -1;
-
-__pyx_t_7 = 0;
-    if (__pyx_t_7 < 0) __pyx_t_7 += __pyx_t_6.shape[0];
-    __pyx_t_8 = (((*((unsigned char *) ( /* dim=0 */ (__pyx_v_pixel_color.data + __pyx_t_5 * __pyx_v_pixel_color.strides[0]) ))) == (*((int *) ( /* dim=0 */ (__pyx_t_6.data + __pyx_t_7 * __pyx_t_6.strides[0]) )))) != 0);
-    __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
-    __pyx_t_6.memview = NULL;
-    __pyx_t_6.data = NULL;
-    if (__pyx_t_8) {
-    } else {
-      __pyx_t_4 = __pyx_t_8;
-      goto __pyx_L6_bool_binop_done;
-    }
-
-    /* "process_image_crossy_road_cy.pyx":37
- *     for i in range(color_chicken.shape[0]):
- *         if(pixel_color[0] == color_chicken[i][0] and
- *                 pixel_color[1] == color_chicken[i][1] and             # <<<<<<<<<<<<<<
- *                 pixel_color[2] == color_chicken[i][2]):
- *             return True
- */
-    __pyx_t_9 = 1;
-    if (__pyx_t_9 < 0) __pyx_t_9 += __pyx_v_pixel_color.shape[0];
-    __pyx_t_6.data = __pyx_v_color_chicken.data;
-    __pyx_t_6.memview = __pyx_v_color_chicken.memview;
-    __PYX_INC_MEMVIEW(&__pyx_t_6, 0);
-    {
-    Py_ssize_t __pyx_tmp_idx = __pyx_v_i;
-    Py_ssize_t __pyx_tmp_shape = __pyx_v_color_chicken.shape[0];
-    Py_ssize_t __pyx_tmp_stride = __pyx_v_color_chicken.strides[0];
-    if (1 && (__pyx_tmp_idx < 0))
-        __pyx_tmp_idx += __pyx_tmp_shape;
-    if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
-        PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
-        __PYX_ERR(0, 37, __pyx_L1_error)
-    }
-        __pyx_t_6.data += __pyx_tmp_idx * __pyx_tmp_stride;
-}
-
-__pyx_t_6.shape[0] = __pyx_v_color_chicken.shape[1];
-__pyx_t_6.strides[0] = __pyx_v_color_chicken.strides[1];
-    __pyx_t_6.suboffsets[0] = -1;
-
-__pyx_t_10 = 1;
-    if (__pyx_t_10 < 0) __pyx_t_10 += __pyx_t_6.shape[0];
-    __pyx_t_8 = (((*((unsigned char *) ( /* dim=0 */ (__pyx_v_pixel_color.data + __pyx_t_9 * __pyx_v_pixel_color.strides[0]) ))) == (*((int *) ( /* dim=0 */ (__pyx_t_6.data + __pyx_t_10 * __pyx_t_6.strides[0]) )))) != 0);
-    __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
-    __pyx_t_6.memview = NULL;
-    __pyx_t_6.data = NULL;
-    if (__pyx_t_8) {
-    } else {
-      __pyx_t_4 = __pyx_t_8;
-      goto __pyx_L6_bool_binop_done;
-    }
-
-    /* "process_image_crossy_road_cy.pyx":38
- *         if(pixel_color[0] == color_chicken[i][0] and
- *                 pixel_color[1] == color_chicken[i][1] and
- *                 pixel_color[2] == color_chicken[i][2]):             # <<<<<<<<<<<<<<
- *             return True
- * 
- */
-    __pyx_t_11 = 2;
-    if (__pyx_t_11 < 0) __pyx_t_11 += __pyx_v_pixel_color.shape[0];
-    __pyx_t_6.data = __pyx_v_color_chicken.data;
-    __pyx_t_6.memview = __pyx_v_color_chicken.memview;
-    __PYX_INC_MEMVIEW(&__pyx_t_6, 0);
-    {
-    Py_ssize_t __pyx_tmp_idx = __pyx_v_i;
-    Py_ssize_t __pyx_tmp_shape = __pyx_v_color_chicken.shape[0];
-    Py_ssize_t __pyx_tmp_stride = __pyx_v_color_chicken.strides[0];
-    if (1 && (__pyx_tmp_idx < 0))
-        __pyx_tmp_idx += __pyx_tmp_shape;
-    if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
-        PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
-        __PYX_ERR(0, 38, __pyx_L1_error)
-    }
-        __pyx_t_6.data += __pyx_tmp_idx * __pyx_tmp_stride;
-}
-
-__pyx_t_6.shape[0] = __pyx_v_color_chicken.shape[1];
-__pyx_t_6.strides[0] = __pyx_v_color_chicken.strides[1];
-    __pyx_t_6.suboffsets[0] = -1;
-
-__pyx_t_12 = 2;
-    if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_t_6.shape[0];
-    __pyx_t_8 = (((*((unsigned char *) ( /* dim=0 */ (__pyx_v_pixel_color.data + __pyx_t_11 * __pyx_v_pixel_color.strides[0]) ))) == (*((int *) ( /* dim=0 */ (__pyx_t_6.data + __pyx_t_12 * __pyx_t_6.strides[0]) )))) != 0);
-    __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
-    __pyx_t_6.memview = NULL;
-    __pyx_t_6.data = NULL;
-    __pyx_t_4 = __pyx_t_8;
-    __pyx_L6_bool_binop_done:;
-
-    /* "process_image_crossy_road_cy.pyx":36
- *     cdef int i
- *     for i in range(color_chicken.shape[0]):
- *         if(pixel_color[0] == color_chicken[i][0] and             # <<<<<<<<<<<<<<
- *                 pixel_color[1] == color_chicken[i][1] and
- *                 pixel_color[2] == color_chicken[i][2]):
- */
-    if (__pyx_t_4) {
-
-      /* "process_image_crossy_road_cy.pyx":39
- *                 pixel_color[1] == color_chicken[i][1] and
- *                 pixel_color[2] == color_chicken[i][2]):
- *             return True             # <<<<<<<<<<<<<<
- * 
- *     return False
- */
-      __pyx_r = 1;
-      goto __pyx_L0;
-
-      /* "process_image_crossy_road_cy.pyx":36
- *     cdef int i
- *     for i in range(color_chicken.shape[0]):
- *         if(pixel_color[0] == color_chicken[i][0] and             # <<<<<<<<<<<<<<
- *                 pixel_color[1] == color_chicken[i][1] and
- *                 pixel_color[2] == color_chicken[i][2]):
- */
-    }
-  }
-
-  /* "process_image_crossy_road_cy.pyx":41
- *             return True
- * 
- *     return False             # <<<<<<<<<<<<<<
- * 
- * @cython.boundscheck(False)
- */
-  __pyx_r = 0;
-  goto __pyx_L0;
-
-  /* "process_image_crossy_road_cy.pyx":31
- * 
- * @cython.boundscheck(False)
- * cdef bint is_chicken(unsigned char[:] pixel, int[:,:] color_chicken):             # <<<<<<<<<<<<<<
- *     cdef unsigned char[:] pixel_color = pixel[:3] # pixel has 4 channels
- * 
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
-  __Pyx_WriteUnraisable("process_image_crossy_road_cy.is_chicken", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __PYX_XDEC_MEMVIEW(&__pyx_v_pixel_color, 1);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "process_image_crossy_road_cy.pyx":44
+/* "process_image_crossy_road_cy.pyx":28
  * 
  * @cython.boundscheck(False)
  * cdef bint is_floor(unsigned char[:] pixel, int[:,:] color_list):             # <<<<<<<<<<<<<<
@@ -3257,7 +2834,7 @@ static int __pyx_f_28process_image_crossy_road_cy_is_floor(__Pyx_memviewslice __
   Py_ssize_t __pyx_t_12;
   __Pyx_RefNannySetupContext("is_floor", 0);
 
-  /* "process_image_crossy_road_cy.pyx":45
+  /* "process_image_crossy_road_cy.pyx":29
  * @cython.boundscheck(False)
  * cdef bint is_floor(unsigned char[:] pixel, int[:,:] color_list):
  *     cdef unsigned char[:] pixel_color = pixel[:3] # pixel has 4 channels             # <<<<<<<<<<<<<<
@@ -3282,14 +2859,14 @@ static int __pyx_f_28process_image_crossy_road_cy_is_floor(__Pyx_memviewslice __
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 45, __pyx_L1_error)
+    __PYX_ERR(0, 29, __pyx_L1_error)
 }
 
 __pyx_v_pixel_color = __pyx_t_1;
   __pyx_t_1.memview = NULL;
   __pyx_t_1.data = NULL;
 
-  /* "process_image_crossy_road_cy.pyx":48
+  /* "process_image_crossy_road_cy.pyx":32
  * 
  *     cdef int i
  *     for i in range(color_list.shape[0]):             # <<<<<<<<<<<<<<
@@ -3300,7 +2877,7 @@ __pyx_v_pixel_color = __pyx_t_1;
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_3; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "process_image_crossy_road_cy.pyx":49
+    /* "process_image_crossy_road_cy.pyx":33
  *     cdef int i
  *     for i in range(color_list.shape[0]):
  *         if(pixel_color[0] == color_list[i][0] and             # <<<<<<<<<<<<<<
@@ -3320,7 +2897,7 @@ __pyx_v_pixel_color = __pyx_t_1;
         __pyx_tmp_idx += __pyx_tmp_shape;
     if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
         PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
-        __PYX_ERR(0, 49, __pyx_L1_error)
+        __PYX_ERR(0, 33, __pyx_L1_error)
     }
         __pyx_t_6.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -3341,7 +2918,7 @@ __pyx_t_7 = 0;
       goto __pyx_L6_bool_binop_done;
     }
 
-    /* "process_image_crossy_road_cy.pyx":50
+    /* "process_image_crossy_road_cy.pyx":34
  *     for i in range(color_list.shape[0]):
  *         if(pixel_color[0] == color_list[i][0] and
  *                 pixel_color[1] == color_list[i][1] and             # <<<<<<<<<<<<<<
@@ -3361,7 +2938,7 @@ __pyx_t_7 = 0;
         __pyx_tmp_idx += __pyx_tmp_shape;
     if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
         PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
-        __PYX_ERR(0, 50, __pyx_L1_error)
+        __PYX_ERR(0, 34, __pyx_L1_error)
     }
         __pyx_t_6.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -3382,7 +2959,7 @@ __pyx_t_10 = 1;
       goto __pyx_L6_bool_binop_done;
     }
 
-    /* "process_image_crossy_road_cy.pyx":51
+    /* "process_image_crossy_road_cy.pyx":35
  *         if(pixel_color[0] == color_list[i][0] and
  *                 pixel_color[1] == color_list[i][1] and
  *                 pixel_color[2] == color_list[i][2]):             # <<<<<<<<<<<<<<
@@ -3402,7 +2979,7 @@ __pyx_t_10 = 1;
         __pyx_tmp_idx += __pyx_tmp_shape;
     if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
         PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
-        __PYX_ERR(0, 51, __pyx_L1_error)
+        __PYX_ERR(0, 35, __pyx_L1_error)
     }
         __pyx_t_6.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -3420,7 +2997,7 @@ __pyx_t_12 = 2;
     __pyx_t_4 = __pyx_t_8;
     __pyx_L6_bool_binop_done:;
 
-    /* "process_image_crossy_road_cy.pyx":49
+    /* "process_image_crossy_road_cy.pyx":33
  *     cdef int i
  *     for i in range(color_list.shape[0]):
  *         if(pixel_color[0] == color_list[i][0] and             # <<<<<<<<<<<<<<
@@ -3429,7 +3006,7 @@ __pyx_t_12 = 2;
  */
     if (__pyx_t_4) {
 
-      /* "process_image_crossy_road_cy.pyx":52
+      /* "process_image_crossy_road_cy.pyx":36
  *                 pixel_color[1] == color_list[i][1] and
  *                 pixel_color[2] == color_list[i][2]):
  *             return True             # <<<<<<<<<<<<<<
@@ -3439,7 +3016,7 @@ __pyx_t_12 = 2;
       __pyx_r = 1;
       goto __pyx_L0;
 
-      /* "process_image_crossy_road_cy.pyx":49
+      /* "process_image_crossy_road_cy.pyx":33
  *     cdef int i
  *     for i in range(color_list.shape[0]):
  *         if(pixel_color[0] == color_list[i][0] and             # <<<<<<<<<<<<<<
@@ -3449,7 +3026,7 @@ __pyx_t_12 = 2;
     }
   }
 
-  /* "process_image_crossy_road_cy.pyx":54
+  /* "process_image_crossy_road_cy.pyx":38
  *             return True
  * 
  *     return False             # <<<<<<<<<<<<<<
@@ -3457,7 +3034,7 @@ __pyx_t_12 = 2;
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "process_image_crossy_road_cy.pyx":44
+  /* "process_image_crossy_road_cy.pyx":28
  * 
  * @cython.boundscheck(False)
  * cdef bint is_floor(unsigned char[:] pixel, int[:,:] color_list):             # <<<<<<<<<<<<<<
@@ -17022,11 +16599,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 0, 1, 1},
   {&__pyx_n_u_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 1, 0, 1},
   {&__pyx_n_s_ch, __pyx_k_ch, sizeof(__pyx_k_ch), 0, 0, 1, 1},
-  {&__pyx_n_s_chicken_num, __pyx_k_chicken_num, sizeof(__pyx_k_chicken_num), 0, 0, 1, 1},
   {&__pyx_n_s_circle, __pyx_k_circle, sizeof(__pyx_k_circle), 0, 0, 1, 1},
   {&__pyx_n_s_class, __pyx_k_class, sizeof(__pyx_k_class), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
-  {&__pyx_n_s_color_chicken, __pyx_k_color_chicken, sizeof(__pyx_k_color_chicken), 0, 0, 1, 1},
   {&__pyx_n_s_color_list, __pyx_k_color_list, sizeof(__pyx_k_color_list), 0, 0, 1, 1},
   {&__pyx_n_s_cols, __pyx_k_cols, sizeof(__pyx_k_cols), 0, 0, 1, 1},
   {&__pyx_kp_s_contiguous_and_direct, __pyx_k_contiguous_and_direct, sizeof(__pyx_k_contiguous_and_direct), 0, 0, 1, 0},
@@ -17117,25 +16692,25 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "process_image_crossy_road_cy.pyx":24
+  /* "process_image_crossy_road_cy.pyx":21
  * 
  *     for i in range(1, cols // block_y + 1):
  *         cv2.line(img, (i * block_y, 0), (i * block_y, rows), (255, 0, 0), 1)             # <<<<<<<<<<<<<<
  *     for i in range(1, rows // block_x + 1):
  *         cv2.line(img, (0, i * block_x), (cols, i * block_x), (255, 0, 0), 1)
  */
-  __pyx_tuple_ = PyTuple_Pack(3, __pyx_int_255, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(3, __pyx_int_255, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "process_image_crossy_road_cy.pyx":26
+  /* "process_image_crossy_road_cy.pyx":23
  *         cv2.line(img, (i * block_y, 0), (i * block_y, rows), (255, 0, 0), 1)
  *     for i in range(1, rows // block_x + 1):
  *         cv2.line(img, (0, i * block_x), (cols, i * block_x), (255, 0, 0), 1)             # <<<<<<<<<<<<<<
  * 
  *     return img, arr
  */
-  __pyx_tuple__2 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
@@ -17345,14 +16920,14 @@ static int __Pyx_InitCachedConstants(void) {
   /* "process_image_crossy_road_cy.pyx":5
  * 
  * @cython.boundscheck(False)
- * def binarify(img, int block_x, int block_y, int[:,:] color_chicken, int [:,:] color_list, chicken_num, floor_num, death_num):             # <<<<<<<<<<<<<<
+ * def binarify(img, int block_x, int block_y, int [:,:] color_list, floor_num, death_num):             # <<<<<<<<<<<<<<
  *     arr = []
  *     cdef int rows, cols, ch
  */
-  __pyx_tuple__22 = PyTuple_Pack(15, __pyx_n_s_img, __pyx_n_s_block_x, __pyx_n_s_block_y, __pyx_n_s_color_chicken, __pyx_n_s_color_list, __pyx_n_s_chicken_num, __pyx_n_s_floor_num, __pyx_n_s_death_num, __pyx_n_s_arr, __pyx_n_s_rows, __pyx_n_s_cols, __pyx_n_s_ch, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_i); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_tuple__22 = PyTuple_Pack(13, __pyx_n_s_img, __pyx_n_s_block_x, __pyx_n_s_block_y, __pyx_n_s_color_list, __pyx_n_s_floor_num, __pyx_n_s_death_num, __pyx_n_s_arr, __pyx_n_s_rows, __pyx_n_s_cols, __pyx_n_s_ch, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_i); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
-  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(8, 0, 15, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_process_image_crossy_road_cy_pyx, __pyx_n_s_binarify, 5, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(6, 0, 13, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_process_image_crossy_road_cy_pyx, __pyx_n_s_binarify, 5, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 5, __pyx_L1_error)
 
   /* "View.MemoryView":284
  *         return self.name
@@ -17430,7 +17005,6 @@ static int __Pyx_InitGlobals(void) {
   __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_3 = PyInt_FromLong(3); if (unlikely(!__pyx_int_3)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_int_5 = PyInt_FromLong(5); if (unlikely(!__pyx_int_5)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_255 = PyInt_FromLong(255); if (unlikely(!__pyx_int_255)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_184977713 = PyInt_FromLong(184977713L); if (unlikely(!__pyx_int_184977713)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_neg_1 = PyInt_FromLong(-1); if (unlikely(!__pyx_int_neg_1)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -17633,7 +17207,7 @@ static int __pyx_pymod_exec_process_image_crossy_road_cy(PyObject *__pyx_pyinit_
   /* "process_image_crossy_road_cy.pyx":5
  * 
  * @cython.boundscheck(False)
- * def binarify(img, int block_x, int block_y, int[:,:] color_chicken, int [:,:] color_list, chicken_num, floor_num, death_num):             # <<<<<<<<<<<<<<
+ * def binarify(img, int block_x, int block_y, int [:,:] color_list, floor_num, death_num):             # <<<<<<<<<<<<<<
  *     arr = []
  *     cdef int rows, cols, ch
  */

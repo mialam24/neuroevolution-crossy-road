@@ -7,6 +7,7 @@ import mss
 import constants_crossy_road as const
 import movement_crossy_road as move
 import process_image_crossy_road as process_image
+import process_input_crossy_road as process_input
 
 # for i in range(5, 0, -1):
 #     print(i)
@@ -19,9 +20,12 @@ while(True):
 
     raw_img = np.array(sct.grab(const.MONITOR))
 
-    processed_img, network_input = process_image.process(raw_img)
+    game_over, processed_img, network_input = process_image.process(raw_img)
 
-    # print(network_input)
+    processed_input = process_input.process(network_input, const.IRRELEVANT_INPUT)
+
+    # print(game_over)
+    # print(processed_input)
     cv2.imshow('Processed Image', processed_img)
     # Press "q" to quit
     if cv2.waitKey(1) & 0xFF == ord('q'):

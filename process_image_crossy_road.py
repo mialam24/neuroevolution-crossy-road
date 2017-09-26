@@ -6,14 +6,15 @@ import constants_crossy_road as const
 import process_image_crossy_road_cy as proc_cy
 
 def process(img):
+    game_status = is_game_over(img, const.PLAY_BUTTON_X - 10, const.PLAY_BUTTON_Y - const.Y_OFFSET, const.GAME_OVER_COLOR)
+
     rotated_img = rotate(img, const.ROTATION_ANGLE)
     affine_img = affine_transform(rotated_img)
     adj_img = adjust_size(affine_img, const.BLOCK_X, const.BLOCK_Y)
-    shifted_img = shift_image(adj_img, -4, -10)
 
-    bin_img, bin_arr = proc_cy.binarify(shifted_img, const.BLOCK_X, const.BLOCK_Y, const.COLOR_CHICKEN, const.COLOR_LIST_FLOOR, const.CHICKEN, const.FLOOR, const.DEATH)
-
-    return bin_img, bin_arr
+    bin_img, bin_arr = proc_cy.binarify(adj_img, const.BLOCK_X, const.BLOCK_Y, const.COLOR_LIST_FLOOR, const.FLOOR, const.DEATH)
+    
+    return game_status, bin_img, bin_arr
 
 def rotate(img, angle):
     old_Y, old_X, ch = img.shape 
@@ -56,19 +57,22 @@ def adjust_size(img, block_x, block_y):
 
     return resized_img
 
-def shift_image(img, shift_x, shift_y):
-    rows, cols, ch = img.shape
-    M = np.float32([[1,0,shift_x],[0,1,shift_y]])
-    shifted_img = cv2.warpAffine(img , M, (cols,rows))
+def is_game_over(img, x, y, color):
+    pixel = img[y,x]
+    if(pixel[0] == color[0] and
+            pixel[1] == color[1] and
+            pixel[2] == color[2]):
+        return True
 
-    return shifted_img
+    return False
 
 if __name__ == '__main__':
     with mss.mss() as sct:
         raw_img = np.array(sct.grab(const.MONITOR))
 
-    processed_img, processed_arr = process(raw_img)
+    game_status, processed_img, processed_arr = process(raw_img)
 
+    print(game_status)
     # print(processed_arr)
     cv2.imshow('Processed Image', processed_img)
 
