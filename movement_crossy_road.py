@@ -49,8 +49,11 @@ def get_score():
 
 if __name__ == '__main__':
     restart()
+    start = time.time()
     left()
     right()
     backward()
     forward()
+    end = time.time()
+    print("Took", end-start, " seconds")
     print(get_score())

@@ -9,14 +9,27 @@ MONITOR = {'top': Y_OFFSET, 'left': 0, 'width': DIM_X, 'height': DIM_Y}
 
 MID_X = DIM_X / 2
 MID_Y = DIM_Y / 2
-PRESS_TIME = 0.05
+PRESS_TIME = 0.01
+MOVE_TIME = 0.25
 PLAY_BUTTON_X = 150
 PLAY_BUTTON_Y = 410 + Y_OFFSET
 WAIT_SCREEN = 2.5
+NOTHING = 0
+UP = 1j
+DOWN = -1j
+LEFT = -1
+RIGHT = 1
+SCREEN_RESET_TIME = 2
+DISPLACEMENT_MOVES = 4
+MAX_DISPLACEMENT = 2
 
 ROTATION_ANGLE = 15
 BLOCK_X = 26
 BLOCK_Y = 26
+DEATH = -1
+FLOOR = 0
+CHICKEN = 1
+COLOR_CHICKEN = np.array([[174, 139, 138], [255, 255, 255], [139, 87, 85], [174, 139, 138]], np.int32)
 COLOR_LIST_FLOOR = np.array([
         [94, 216, 166], [87, 208, 160], # Grass
         [93, 78, 72], [48, 109, 84], # Grass

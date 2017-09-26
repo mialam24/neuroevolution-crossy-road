@@ -15,9 +15,9 @@ import process_image_crossy_road as process_image
 sct = mss.mss()
 
 while(True):
-    raw_img = np.array(sct.grab(const.MONITOR))
-
     last_time = time.time()
+
+    raw_img = np.array(sct.grab(const.MONITOR))
 
     processed_img, network_input = process_image.process(raw_img)
 
@@ -28,7 +28,9 @@ while(True):
         cv2.destroyAllWindows()
         break
 
-    while(time.time()-last_time < const.PRESS_TIME):
+    # move.forward()
+
+    while(time.time()-last_time < const.MOVE_TIME):
         time.sleep(0.0001)
 
     # print('fps: {0}'.format(1 / (time.time()-last_time)))
