@@ -1,5 +1,19 @@
 import cv2
 import numpy as np
+import mss
+
+import constants_crossy_road as const
+import process_image_crossy_road_cy as proc_cy
+
+def process(img):
+    rotated_img = rotate(img, const.ROTATION_ANGLE)
+    affine_img = affine_transform(rotated_img)
+    adj_img = adjust_size(affine_img, const.BLOCK_X, const.BLOCK_Y)
+    shifted_img = shift_image(adj_img, -4, -10)
+
+    final_img, final_arr = proc_cy.binarify(shifted_img, const.BLOCK_X, const.BLOCK_Y, const.COLOR_LIST_FLOOR)
+
+    return final_img, final_arr
 
 def rotate(img, angle):
     old_Y, old_X, ch = img.shape 
@@ -30,19 +44,33 @@ def affine_transform(img):
     
     return img_out
 
+def adjust_size(img, block_x, block_y):
+    rows, cols, ch = img.shape
+
+    rows_needed = block_y - (rows % block_y)
+    cols_needed = block_x - (cols % block_x)
+
+    resized_img = cv2.copyMakeBorder( img, rows_needed // 2, 
+            -(-rows_needed // 2), cols_needed // 2, -(-cols_needed // 2), 
+            cv2.BORDER_CONSTANT, value=[0, 0, 0])
+
+    return resized_img
+
+def shift_image(img, shift_x, shift_y):
+    rows, cols, ch = img.shape
+    M = np.float32([[1,0,shift_x],[0,1,shift_y]])
+    shifted_img = cv2.warpAffine(img , M, (cols,rows))
+
+    return shifted_img
+
 if __name__ == '__main__':
-    img = cv2.imread('screenshot.png')
-    rotated_img = rotate(img, 15)
-    affine_img = affine_transform(rotated_img)
+    with mss.mss() as sct:
+        raw_img = np.array(sct.grab(const.MONITOR))
 
-    rows, cols, ch = affine_img.shape
+    processed_img, processed_arr = process(raw_img)
 
-    for i in range(1, cols // 26 + 1):
-        cv2.line(affine_img, (i * 26 - 4, 0), (i * 26 - 4, rows), (255, 0, 0), 1)
-    for i in range(1, rows // 26 + 1):
-        cv2.line(affine_img, (0, i * 26), (cols, i * 26), (255, 0, 0), 1)
-
-    cv2.imshow('Processed Image', affine_img)
+    print(processed_arr)
+    cv2.imshow('Processed Image', processed_img)
 
     while(True):
         # Press "q" to quit
