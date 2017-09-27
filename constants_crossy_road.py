@@ -1,24 +1,35 @@
 import numpy as np
 
 # Constants
+NUM_GENERATIONS = 2
+NUM_INDIVIDUALS = 3
+
 DIM_X = 240
 DIM_Y = 432
 X_OFFSET = 0
 Y_OFFSET = 37
-MONITOR = {'top': Y_OFFSET, 'left': 0, 'width': DIM_X, 'height': DIM_Y}
+MONITOR = {'top': Y_OFFSET, 'left': X_OFFSET, 
+        'width': DIM_X, 'height': DIM_Y}
 
+DIGIT_X = 4
+DIGIT_Y = 5
+DIGIT_WIDTH = 34
+DIGIT_WIDTH_ONE = 21
+DIGIT_HEIGHT = 33
+
+PY_PAUSE = 0.0
 MID_X = DIM_X / 2
 MID_Y = DIM_Y / 2
-PRESS_TIME = 0.01
+PRESS_TIME = 0.05
 MOVE_TIME = 0.25
 PLAY_BUTTON_X = 150
 PLAY_BUTTON_Y = 410 + Y_OFFSET
-WAIT_SCREEN = 2.5
-NOTHING = 0
-UP = 1j
-DOWN = -1j
-LEFT = -1
-RIGHT = 1
+WAIT_SCREEN = 3
+IDX_NOTHING = 0
+IDX_UP = 1
+IDX_DOWN = 2
+IDX_LEFT = 3
+IDX_RIGHT = 4
 
 ROTATION_ANGLE = 15
 BLOCK_X = 26
@@ -27,9 +38,9 @@ DEATH = -1
 FLOOR = 0
 COLOR_LIST_FLOOR = np.array([
         [94, 216, 166], [87, 208, 160], # Grass
-        [93, 78, 72], [48, 109, 84], # Grass
+        [93, 78, 72], [48, 109, 84], [140, 118, 109], # Road
         [95, 255, 255], [0, 15, 255], [54, 151, 171], [44, 105, 118], # Coin
-        [75, 74, 125], [57, 57, 113], [31, 30, 59], [97, 101, 147], # Log
+        [75, 74, 125], [57, 57, 113], [31, 30, 59], [97, 101, 147], [41, 39, 65], # Log
         [109, 185, 28], [87, 159, 15], [52, 75, 11], [83, 141, 21], # Lilypad
         [61, 59, 105], [92, 69, 71], [168, 131, 136], # Railroad
         ], np.int32)
@@ -55,3 +66,5 @@ IRRELEVANT_INPUT = [*range(0,8), *range(9, 16),
         *range(272,279), 288,
         *range(289,297), *range(301,306),
         *range(306,314), *range(315,323)]
+
+

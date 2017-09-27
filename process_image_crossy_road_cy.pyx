@@ -26,13 +26,11 @@ def binarify(img, int block_x, int block_y, int [:,:] color_list, floor_num, dea
 
 @cython.boundscheck(False)
 cdef bint is_floor(unsigned char[:] pixel, int[:,:] color_list):
-    cdef unsigned char[:] pixel_color = pixel[:3] # pixel has 4 channels
-
     cdef int i
     for i in range(color_list.shape[0]):
-        if(pixel_color[0] == color_list[i][0] and
-                pixel_color[1] == color_list[i][1] and
-                pixel_color[2] == color_list[i][2]):
+        if(pixel[0] == color_list[i][0] and
+                pixel[1] == color_list[i][1] and
+                pixel[2] == color_list[i][2]):
             return True
 
     return False

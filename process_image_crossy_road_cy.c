@@ -2811,84 +2811,132 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
  * 
  * @cython.boundscheck(False)
  * cdef bint is_floor(unsigned char[:] pixel, int[:,:] color_list):             # <<<<<<<<<<<<<<
- *     cdef unsigned char[:] pixel_color = pixel[:3] # pixel has 4 channels
- * 
+ *     cdef int i
+ *     for i in range(color_list.shape[0]):
  */
 
 static int __pyx_f_28process_image_crossy_road_cy_is_floor(__Pyx_memviewslice __pyx_v_pixel, __Pyx_memviewslice __pyx_v_color_list) {
-  __Pyx_memviewslice __pyx_v_pixel_color = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_i;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
-  __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  Py_ssize_t __pyx_t_1;
   int __pyx_t_2;
-  Py_ssize_t __pyx_t_3;
-  int __pyx_t_4;
-  Py_ssize_t __pyx_t_5;
-  __Pyx_memviewslice __pyx_t_6 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_t_7;
-  int __pyx_t_8;
+  int __pyx_t_3;
+  Py_ssize_t __pyx_t_4;
+  __Pyx_memviewslice __pyx_t_5 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  Py_ssize_t __pyx_t_6;
+  int __pyx_t_7;
+  Py_ssize_t __pyx_t_8;
   Py_ssize_t __pyx_t_9;
   Py_ssize_t __pyx_t_10;
   Py_ssize_t __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
   __Pyx_RefNannySetupContext("is_floor", 0);
 
-  /* "process_image_crossy_road_cy.pyx":29
- * @cython.boundscheck(False)
+  /* "process_image_crossy_road_cy.pyx":30
  * cdef bint is_floor(unsigned char[:] pixel, int[:,:] color_list):
- *     cdef unsigned char[:] pixel_color = pixel[:3] # pixel has 4 channels             # <<<<<<<<<<<<<<
- * 
- *     cdef int i
- */
-  __pyx_t_1.data = __pyx_v_pixel.data;
-  __pyx_t_1.memview = __pyx_v_pixel.memview;
-  __PYX_INC_MEMVIEW(&__pyx_t_1, 0);
-  __pyx_t_2 = -1;
-  if (unlikely(__pyx_memoryview_slice_memviewslice(
-    &__pyx_t_1,
-    __pyx_v_pixel.shape[0], __pyx_v_pixel.strides[0], __pyx_v_pixel.suboffsets[0],
-    0,
-    0,
-    &__pyx_t_2,
-    0,
-    3,
-    0,
-    0,
-    1,
-    0,
-    1) < 0))
-{
-    __PYX_ERR(0, 29, __pyx_L1_error)
-}
-
-__pyx_v_pixel_color = __pyx_t_1;
-  __pyx_t_1.memview = NULL;
-  __pyx_t_1.data = NULL;
-
-  /* "process_image_crossy_road_cy.pyx":32
- * 
  *     cdef int i
  *     for i in range(color_list.shape[0]):             # <<<<<<<<<<<<<<
- *         if(pixel_color[0] == color_list[i][0] and
- *                 pixel_color[1] == color_list[i][1] and
+ *         if(pixel[0] == color_list[i][0] and
+ *                 pixel[1] == color_list[i][1] and
  */
-  __pyx_t_3 = (__pyx_v_color_list.shape[0]);
-  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_3; __pyx_t_2+=1) {
+  __pyx_t_1 = (__pyx_v_color_list.shape[0]);
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "process_image_crossy_road_cy.pyx":33
+    /* "process_image_crossy_road_cy.pyx":31
  *     cdef int i
  *     for i in range(color_list.shape[0]):
- *         if(pixel_color[0] == color_list[i][0] and             # <<<<<<<<<<<<<<
- *                 pixel_color[1] == color_list[i][1] and
- *                 pixel_color[2] == color_list[i][2]):
+ *         if(pixel[0] == color_list[i][0] and             # <<<<<<<<<<<<<<
+ *                 pixel[1] == color_list[i][1] and
+ *                 pixel[2] == color_list[i][2]):
  */
-    __pyx_t_5 = 0;
-    if (__pyx_t_5 < 0) __pyx_t_5 += __pyx_v_pixel_color.shape[0];
-    __pyx_t_6.data = __pyx_v_color_list.data;
-    __pyx_t_6.memview = __pyx_v_color_list.memview;
-    __PYX_INC_MEMVIEW(&__pyx_t_6, 0);
+    __pyx_t_4 = 0;
+    if (__pyx_t_4 < 0) __pyx_t_4 += __pyx_v_pixel.shape[0];
+    __pyx_t_5.data = __pyx_v_color_list.data;
+    __pyx_t_5.memview = __pyx_v_color_list.memview;
+    __PYX_INC_MEMVIEW(&__pyx_t_5, 0);
+    {
+    Py_ssize_t __pyx_tmp_idx = __pyx_v_i;
+    Py_ssize_t __pyx_tmp_shape = __pyx_v_color_list.shape[0];
+    Py_ssize_t __pyx_tmp_stride = __pyx_v_color_list.strides[0];
+    if (1 && (__pyx_tmp_idx < 0))
+        __pyx_tmp_idx += __pyx_tmp_shape;
+    if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
+        PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
+        __PYX_ERR(0, 31, __pyx_L1_error)
+    }
+        __pyx_t_5.data += __pyx_tmp_idx * __pyx_tmp_stride;
+}
+
+__pyx_t_5.shape[0] = __pyx_v_color_list.shape[1];
+__pyx_t_5.strides[0] = __pyx_v_color_list.strides[1];
+    __pyx_t_5.suboffsets[0] = -1;
+
+__pyx_t_6 = 0;
+    if (__pyx_t_6 < 0) __pyx_t_6 += __pyx_t_5.shape[0];
+    __pyx_t_7 = (((*((unsigned char *) ( /* dim=0 */ (__pyx_v_pixel.data + __pyx_t_4 * __pyx_v_pixel.strides[0]) ))) == (*((int *) ( /* dim=0 */ (__pyx_t_5.data + __pyx_t_6 * __pyx_t_5.strides[0]) )))) != 0);
+    __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
+    __pyx_t_5.memview = NULL;
+    __pyx_t_5.data = NULL;
+    if (__pyx_t_7) {
+    } else {
+      __pyx_t_3 = __pyx_t_7;
+      goto __pyx_L6_bool_binop_done;
+    }
+
+    /* "process_image_crossy_road_cy.pyx":32
+ *     for i in range(color_list.shape[0]):
+ *         if(pixel[0] == color_list[i][0] and
+ *                 pixel[1] == color_list[i][1] and             # <<<<<<<<<<<<<<
+ *                 pixel[2] == color_list[i][2]):
+ *             return True
+ */
+    __pyx_t_8 = 1;
+    if (__pyx_t_8 < 0) __pyx_t_8 += __pyx_v_pixel.shape[0];
+    __pyx_t_5.data = __pyx_v_color_list.data;
+    __pyx_t_5.memview = __pyx_v_color_list.memview;
+    __PYX_INC_MEMVIEW(&__pyx_t_5, 0);
+    {
+    Py_ssize_t __pyx_tmp_idx = __pyx_v_i;
+    Py_ssize_t __pyx_tmp_shape = __pyx_v_color_list.shape[0];
+    Py_ssize_t __pyx_tmp_stride = __pyx_v_color_list.strides[0];
+    if (1 && (__pyx_tmp_idx < 0))
+        __pyx_tmp_idx += __pyx_tmp_shape;
+    if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
+        PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
+        __PYX_ERR(0, 32, __pyx_L1_error)
+    }
+        __pyx_t_5.data += __pyx_tmp_idx * __pyx_tmp_stride;
+}
+
+__pyx_t_5.shape[0] = __pyx_v_color_list.shape[1];
+__pyx_t_5.strides[0] = __pyx_v_color_list.strides[1];
+    __pyx_t_5.suboffsets[0] = -1;
+
+__pyx_t_9 = 1;
+    if (__pyx_t_9 < 0) __pyx_t_9 += __pyx_t_5.shape[0];
+    __pyx_t_7 = (((*((unsigned char *) ( /* dim=0 */ (__pyx_v_pixel.data + __pyx_t_8 * __pyx_v_pixel.strides[0]) ))) == (*((int *) ( /* dim=0 */ (__pyx_t_5.data + __pyx_t_9 * __pyx_t_5.strides[0]) )))) != 0);
+    __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
+    __pyx_t_5.memview = NULL;
+    __pyx_t_5.data = NULL;
+    if (__pyx_t_7) {
+    } else {
+      __pyx_t_3 = __pyx_t_7;
+      goto __pyx_L6_bool_binop_done;
+    }
+
+    /* "process_image_crossy_road_cy.pyx":33
+ *         if(pixel[0] == color_list[i][0] and
+ *                 pixel[1] == color_list[i][1] and
+ *                 pixel[2] == color_list[i][2]):             # <<<<<<<<<<<<<<
+ *             return True
+ * 
+ */
+    __pyx_t_10 = 2;
+    if (__pyx_t_10 < 0) __pyx_t_10 += __pyx_v_pixel.shape[0];
+    __pyx_t_5.data = __pyx_v_color_list.data;
+    __pyx_t_5.memview = __pyx_v_color_list.memview;
+    __PYX_INC_MEMVIEW(&__pyx_t_5, 0);
     {
     Py_ssize_t __pyx_tmp_idx = __pyx_v_i;
     Py_ssize_t __pyx_tmp_shape = __pyx_v_color_list.shape[0];
@@ -2899,116 +2947,34 @@ __pyx_v_pixel_color = __pyx_t_1;
         PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
         __PYX_ERR(0, 33, __pyx_L1_error)
     }
-        __pyx_t_6.data += __pyx_tmp_idx * __pyx_tmp_stride;
+        __pyx_t_5.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
 
-__pyx_t_6.shape[0] = __pyx_v_color_list.shape[1];
-__pyx_t_6.strides[0] = __pyx_v_color_list.strides[1];
-    __pyx_t_6.suboffsets[0] = -1;
+__pyx_t_5.shape[0] = __pyx_v_color_list.shape[1];
+__pyx_t_5.strides[0] = __pyx_v_color_list.strides[1];
+    __pyx_t_5.suboffsets[0] = -1;
 
-__pyx_t_7 = 0;
-    if (__pyx_t_7 < 0) __pyx_t_7 += __pyx_t_6.shape[0];
-    __pyx_t_8 = (((*((unsigned char *) ( /* dim=0 */ (__pyx_v_pixel_color.data + __pyx_t_5 * __pyx_v_pixel_color.strides[0]) ))) == (*((int *) ( /* dim=0 */ (__pyx_t_6.data + __pyx_t_7 * __pyx_t_6.strides[0]) )))) != 0);
-    __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
-    __pyx_t_6.memview = NULL;
-    __pyx_t_6.data = NULL;
-    if (__pyx_t_8) {
-    } else {
-      __pyx_t_4 = __pyx_t_8;
-      goto __pyx_L6_bool_binop_done;
-    }
-
-    /* "process_image_crossy_road_cy.pyx":34
- *     for i in range(color_list.shape[0]):
- *         if(pixel_color[0] == color_list[i][0] and
- *                 pixel_color[1] == color_list[i][1] and             # <<<<<<<<<<<<<<
- *                 pixel_color[2] == color_list[i][2]):
- *             return True
- */
-    __pyx_t_9 = 1;
-    if (__pyx_t_9 < 0) __pyx_t_9 += __pyx_v_pixel_color.shape[0];
-    __pyx_t_6.data = __pyx_v_color_list.data;
-    __pyx_t_6.memview = __pyx_v_color_list.memview;
-    __PYX_INC_MEMVIEW(&__pyx_t_6, 0);
-    {
-    Py_ssize_t __pyx_tmp_idx = __pyx_v_i;
-    Py_ssize_t __pyx_tmp_shape = __pyx_v_color_list.shape[0];
-    Py_ssize_t __pyx_tmp_stride = __pyx_v_color_list.strides[0];
-    if (1 && (__pyx_tmp_idx < 0))
-        __pyx_tmp_idx += __pyx_tmp_shape;
-    if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
-        PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
-        __PYX_ERR(0, 34, __pyx_L1_error)
-    }
-        __pyx_t_6.data += __pyx_tmp_idx * __pyx_tmp_stride;
-}
-
-__pyx_t_6.shape[0] = __pyx_v_color_list.shape[1];
-__pyx_t_6.strides[0] = __pyx_v_color_list.strides[1];
-    __pyx_t_6.suboffsets[0] = -1;
-
-__pyx_t_10 = 1;
-    if (__pyx_t_10 < 0) __pyx_t_10 += __pyx_t_6.shape[0];
-    __pyx_t_8 = (((*((unsigned char *) ( /* dim=0 */ (__pyx_v_pixel_color.data + __pyx_t_9 * __pyx_v_pixel_color.strides[0]) ))) == (*((int *) ( /* dim=0 */ (__pyx_t_6.data + __pyx_t_10 * __pyx_t_6.strides[0]) )))) != 0);
-    __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
-    __pyx_t_6.memview = NULL;
-    __pyx_t_6.data = NULL;
-    if (__pyx_t_8) {
-    } else {
-      __pyx_t_4 = __pyx_t_8;
-      goto __pyx_L6_bool_binop_done;
-    }
-
-    /* "process_image_crossy_road_cy.pyx":35
- *         if(pixel_color[0] == color_list[i][0] and
- *                 pixel_color[1] == color_list[i][1] and
- *                 pixel_color[2] == color_list[i][2]):             # <<<<<<<<<<<<<<
- *             return True
- * 
- */
-    __pyx_t_11 = 2;
-    if (__pyx_t_11 < 0) __pyx_t_11 += __pyx_v_pixel_color.shape[0];
-    __pyx_t_6.data = __pyx_v_color_list.data;
-    __pyx_t_6.memview = __pyx_v_color_list.memview;
-    __PYX_INC_MEMVIEW(&__pyx_t_6, 0);
-    {
-    Py_ssize_t __pyx_tmp_idx = __pyx_v_i;
-    Py_ssize_t __pyx_tmp_shape = __pyx_v_color_list.shape[0];
-    Py_ssize_t __pyx_tmp_stride = __pyx_v_color_list.strides[0];
-    if (1 && (__pyx_tmp_idx < 0))
-        __pyx_tmp_idx += __pyx_tmp_shape;
-    if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
-        PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
-        __PYX_ERR(0, 35, __pyx_L1_error)
-    }
-        __pyx_t_6.data += __pyx_tmp_idx * __pyx_tmp_stride;
-}
-
-__pyx_t_6.shape[0] = __pyx_v_color_list.shape[1];
-__pyx_t_6.strides[0] = __pyx_v_color_list.strides[1];
-    __pyx_t_6.suboffsets[0] = -1;
-
-__pyx_t_12 = 2;
-    if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_t_6.shape[0];
-    __pyx_t_8 = (((*((unsigned char *) ( /* dim=0 */ (__pyx_v_pixel_color.data + __pyx_t_11 * __pyx_v_pixel_color.strides[0]) ))) == (*((int *) ( /* dim=0 */ (__pyx_t_6.data + __pyx_t_12 * __pyx_t_6.strides[0]) )))) != 0);
-    __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
-    __pyx_t_6.memview = NULL;
-    __pyx_t_6.data = NULL;
-    __pyx_t_4 = __pyx_t_8;
+__pyx_t_11 = 2;
+    if (__pyx_t_11 < 0) __pyx_t_11 += __pyx_t_5.shape[0];
+    __pyx_t_7 = (((*((unsigned char *) ( /* dim=0 */ (__pyx_v_pixel.data + __pyx_t_10 * __pyx_v_pixel.strides[0]) ))) == (*((int *) ( /* dim=0 */ (__pyx_t_5.data + __pyx_t_11 * __pyx_t_5.strides[0]) )))) != 0);
+    __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
+    __pyx_t_5.memview = NULL;
+    __pyx_t_5.data = NULL;
+    __pyx_t_3 = __pyx_t_7;
     __pyx_L6_bool_binop_done:;
 
-    /* "process_image_crossy_road_cy.pyx":33
+    /* "process_image_crossy_road_cy.pyx":31
  *     cdef int i
  *     for i in range(color_list.shape[0]):
- *         if(pixel_color[0] == color_list[i][0] and             # <<<<<<<<<<<<<<
- *                 pixel_color[1] == color_list[i][1] and
- *                 pixel_color[2] == color_list[i][2]):
+ *         if(pixel[0] == color_list[i][0] and             # <<<<<<<<<<<<<<
+ *                 pixel[1] == color_list[i][1] and
+ *                 pixel[2] == color_list[i][2]):
  */
-    if (__pyx_t_4) {
+    if (__pyx_t_3) {
 
-      /* "process_image_crossy_road_cy.pyx":36
- *                 pixel_color[1] == color_list[i][1] and
- *                 pixel_color[2] == color_list[i][2]):
+      /* "process_image_crossy_road_cy.pyx":34
+ *                 pixel[1] == color_list[i][1] and
+ *                 pixel[2] == color_list[i][2]):
  *             return True             # <<<<<<<<<<<<<<
  * 
  *     return False
@@ -3016,17 +2982,17 @@ __pyx_t_12 = 2;
       __pyx_r = 1;
       goto __pyx_L0;
 
-      /* "process_image_crossy_road_cy.pyx":33
+      /* "process_image_crossy_road_cy.pyx":31
  *     cdef int i
  *     for i in range(color_list.shape[0]):
- *         if(pixel_color[0] == color_list[i][0] and             # <<<<<<<<<<<<<<
- *                 pixel_color[1] == color_list[i][1] and
- *                 pixel_color[2] == color_list[i][2]):
+ *         if(pixel[0] == color_list[i][0] and             # <<<<<<<<<<<<<<
+ *                 pixel[1] == color_list[i][1] and
+ *                 pixel[2] == color_list[i][2]):
  */
     }
   }
 
-  /* "process_image_crossy_road_cy.pyx":38
+  /* "process_image_crossy_road_cy.pyx":36
  *             return True
  * 
  *     return False             # <<<<<<<<<<<<<<
@@ -3038,18 +3004,16 @@ __pyx_t_12 = 2;
  * 
  * @cython.boundscheck(False)
  * cdef bint is_floor(unsigned char[:] pixel, int[:,:] color_list):             # <<<<<<<<<<<<<<
- *     cdef unsigned char[:] pixel_color = pixel[:3] # pixel has 4 channels
- * 
+ *     cdef int i
+ *     for i in range(color_list.shape[0]):
  */
 
   /* function exit code */
   __pyx_L1_error:;
-  __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
   __Pyx_WriteUnraisable("process_image_crossy_road_cy.is_floor", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   __pyx_L0:;
-  __PYX_XDEC_MEMVIEW(&__pyx_v_pixel_color, 1);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }

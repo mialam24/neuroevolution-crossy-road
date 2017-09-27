@@ -1,6 +1,5 @@
 *.swp
 *.swo
-*.png
 __pycache__/
 *.py[cod]
 *.so

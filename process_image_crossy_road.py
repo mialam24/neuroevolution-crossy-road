@@ -11,8 +11,9 @@ def process(img):
     rotated_img = rotate(img, const.ROTATION_ANGLE)
     affine_img = affine_transform(rotated_img)
     adj_img = adjust_size(affine_img, const.BLOCK_X, const.BLOCK_Y)
+    shifted_img = shift_image(adj_img, -4, -10)
 
-    bin_img, bin_arr = proc_cy.binarify(adj_img, const.BLOCK_X, const.BLOCK_Y, const.COLOR_LIST_FLOOR, const.FLOOR, const.DEATH)
+    bin_img, bin_arr = proc_cy.binarify(shifted_img, const.BLOCK_X, const.BLOCK_Y, const.COLOR_LIST_FLOOR, const.FLOOR, const.DEATH)
     
     return game_status, bin_img, bin_arr
 
@@ -56,6 +57,13 @@ def adjust_size(img, block_x, block_y):
             cv2.BORDER_CONSTANT, value=[0, 0, 0])
 
     return resized_img
+
+def shift_image(img, shift_x, shift_y):
+    rows, cols, ch = img.shape
+    M = np.float32([[1,0,shift_x],[0,1,shift_y]])
+    shifted_img = cv2.warpAffine(img , M, (cols,rows))
+
+    return shifted_img
 
 def is_game_over(img, x, y, color):
     pixel = img[y,x]
