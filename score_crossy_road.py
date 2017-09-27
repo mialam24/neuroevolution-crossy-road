@@ -65,8 +65,12 @@ def get_score():
         else: shift_x += const.DIGIT_WIDTH - 3
         num_arr.append(num)
 
-    score = ''.join(str(e) for e in num_arr)
-    score = int(score)
+    try:
+        score = ''.join(str(e) for e in num_arr)
+        score = int(score)
+    except:
+        score = -1
+
     return score
 
 def identify_digit(img, prev_num):

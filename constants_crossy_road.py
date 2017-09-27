@@ -36,17 +36,32 @@ BLOCK_X = 26
 BLOCK_Y = 26
 DEATH = -1
 FLOOR = 0
-COLOR_LIST_FLOOR = np.array([
+CHICKEN = 1
+
+COLOR_LIST_CHICKEN = np.array([
+    [174, 139, 138], [139, 87, 85]], np.int32)
+
+COLOR_LIST_FLOOR_SIMPLE = np.array([
         [94, 216, 166], [87, 208, 160], # Grass
-        [93, 78, 72], [48, 109, 84], [140, 118, 109], # Road
-        [95, 255, 255], [0, 15, 255], [54, 151, 171], [44, 105, 118], # Coin
-        [75, 74, 125], [57, 57, 113], [31, 30, 59], [97, 101, 147], [41, 39, 65], # Log
-        [109, 185, 28], [87, 159, 15], [52, 75, 11], [83, 141, 21], # Lilypad
+        [93, 78, 72], [140, 118, 109], # Road
         [61, 59, 105], [92, 69, 71], [168, 131, 136], # Railroad
         ], np.int32)
+        
+COLOR_LIST_FLOOR_TRICKY = np.array([
+        [95, 255, 255], # Coin
+        [75, 74, 125], [57, 57, 113], # Log
+        [109, 185, 28], [87, 159, 15], # Lilypad
+        ], np.int32)
+
 HOME_CELL_X = 9
 HOME_CELL_Y = 13
 GAME_OVER_COLOR = [249, 199, 86]
+GREAT_X = 200
+GREAT_Y = 150
+GREAT_SCORE_COLOR = [236, 206, 105]
+GAME_STATUS_GAME_OVER = -1
+GAME_STATUS_GREAT_SCORE = 1
+GAME_STATUS_PLAYING = 0
 
 IRRELEVANT_INPUT = [*range(0,8), *range(9, 16),
         *range(17,21), *range(26, 34), 

@@ -1,19 +1,29 @@
 import cv2
 import numpy as np
 import mss
+import time
 
 import constants_crossy_road as const
 import process_image_crossy_road_cy as proc_cy
 
 def process(img):
-    game_status = is_game_over(img, const.PLAY_BUTTON_X - 10, const.PLAY_BUTTON_Y - const.Y_OFFSET, const.GAME_OVER_COLOR)
+    game_status = get_game_status(img, 
+            const.PLAY_BUTTON_X - 10, const.PLAY_BUTTON_Y - const.Y_OFFSET, 
+            const.GAME_OVER_COLOR,
+            const.GREAT_X, const.GREAT_Y, const.GREAT_SCORE_COLOR,
+            const.GAME_STATUS_GAME_OVER, const.GAME_STATUS_PLAYING,
+            const.GAME_STATUS_GREAT_SCORE)
 
     rotated_img = rotate(img, const.ROTATION_ANGLE)
     affine_img = affine_transform(rotated_img)
     adj_img = adjust_size(affine_img, const.BLOCK_X, const.BLOCK_Y)
     shifted_img = shift_image(adj_img, -4, -10)
 
-    bin_img, bin_arr = proc_cy.binarify(shifted_img, const.BLOCK_X, const.BLOCK_Y, const.COLOR_LIST_FLOOR, const.FLOOR, const.DEATH)
+    bin_img, bin_arr = proc_cy.binarify(shifted_img, 
+            const.BLOCK_X, const.BLOCK_Y, 
+            const.COLOR_LIST_CHICKEN,
+            const.COLOR_LIST_FLOOR_SIMPLE, const.COLOR_LIST_FLOOR_TRICKY, 
+            const.CHICKEN, const.FLOOR, const.DEATH)
     
     return game_status, bin_img, bin_arr
 
@@ -65,27 +75,39 @@ def shift_image(img, shift_x, shift_y):
 
     return shifted_img
 
-def is_game_over(img, x, y, color):
+def get_game_status(img, x, y, color, great_x, great_y, great_color,
+        game_over, playing, great_score):
     pixel = img[y,x]
+    great_pixel = img[great_y,great_x]
+
     if(pixel[0] == color[0] and
             pixel[1] == color[1] and
             pixel[2] == color[2]):
-        return True
+        return game_over
 
-    return False
+    if(great_pixel[0] == great_color[0] and
+            great_pixel[1] == great_color[1] and
+            great_pixel[2] == great_color[2]):
+        return great_score
+
+    return playing
 
 if __name__ == '__main__':
-    with mss.mss() as sct:
-        raw_img = np.array(sct.grab(const.MONITOR))
-
-    game_status, processed_img, processed_arr = process(raw_img)
-
-    print(game_status)
-    # print(processed_arr)
-    cv2.imshow('Processed Image', processed_img)
-
+    sct = mss.mss()
     while(True):
+        last_time = time.time()
+
+        raw_img = np.array(sct.grab(const.MONITOR))
+        raw_img = raw_img[:, :, 0:3]
+
+        game_status, processed_img, processed_arr = process(raw_img)
+
+        print('fps: {0}'.format(1 / (time.time()-last_time)))
+        cv2.imshow('Processed Image', processed_img)
         # Press "q" to quit
         if cv2.waitKey(25) & 0xFF == ord('q'):
             cv2.destroyAllWindows()
             break
+
+        # print(game_status)
+        # print(processed_arr)
