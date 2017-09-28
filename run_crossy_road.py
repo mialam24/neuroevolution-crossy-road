@@ -3,7 +3,10 @@ import numpy as np
 import cv2
 from scipy import misc
 import mss
-import random
+
+import os
+import neat
+import visualize
 
 import constants_crossy_road as const
 import movement_crossy_road as move
@@ -12,49 +15,107 @@ import score_crossy_road as score
 
 sct = mss.mss()
 
-while(True):
-    last_time = time.time()
-
-    raw_img = np.array(sct.grab(const.MONITOR))
-    raw_img = raw_img[:, :, 0:3]
-    _, processed_img, _ = process_image.process(raw_img)
+def setup():
+    while(True):
+        last_time = time.time()
     
-    # print('fps: {0}'.format(1 / (time.time()-last_time)))
-
-    cv2.imshow('Processed Image', processed_img)
-    if cv2.waitKey(25) & 0xFF == ord('q'):
-        break
-
-for generation in range(1, const.NUM_GENERATIONS + 1):
-    print("Generation: ", generation)
-    for individual in range(1, const.NUM_INDIVIDUALS + 1):
-        print("Individual: ", individual)
-        move.restart()
-
-        while(True):
-            last_time = time.time()
+        raw_img = np.array(sct.grab(const.MONITOR))
+        raw_img = raw_img[:, :, 0:3]
+        _, processed_img, _ = process_image.process(raw_img)
         
-            raw_img = np.array(sct.grab(const.MONITOR))
-            raw_img = raw_img[:, :, 0:3]
-        
-            game_status, processed_img, network_input = process_image.process(raw_img)
-            if(game_status == const.GAME_STATUS_GAME_OVER):
-                break
-            elif(game_status == const.GAME_STATUS_GREAT_SCORE):
-                move.escape()
-                break
+        cv2.imshow('Processed Image', processed_img)
+        if cv2.waitKey(25) & 0xFF == ord('q'):
+            break
+    
+    for i in range(5,0,-1):
+        print(i)
+        time.sleep(1)
 
+def cross_the_road(genome, net):
+    time.sleep(2)
+    move.restart()
+
+    while(True):
+        last_time = time.time()
+    
+        raw_img = np.array(sct.grab(const.MONITOR))
+        raw_img = raw_img[:, :, 0:3]
+
+        game_status, processed_img, network_input = process_image.process(raw_img)
+        cv2.imshow('Processed Image', processed_img)
+        # Press "q" to quit
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            cv2.destroyAllWindows()
+            quit()
+
+        # if(game_status == const.GAME_STATUS_GREAT_SCORE):
+        #     move.escape()
+        if(game_status != const.GAME_STATUS_PLAYING):
+            break
+        
+        network_output = net.activate(network_input)
+        index = network_output.index(max(network_output))
+        
+        if(index == const.IDX_FORWARD):
             move.forward()
-        
-            cv2.imshow('Processed Image', processed_img)
-            # Press "q" to quit
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                cv2.destroyAllWindows()
-                quit()
-        
-            # print('fps: {0}'.format(1 / (time.time()-last_time)))
-        
-            # while(time.time()-last_time < const.MOVE_TIME):
-            #     time.sleep(0.0001)
+        elif(index == const.IDX_BACKWARD):
+            move.backward()
+        elif(index == const.IDX_LEFT):
+            move.left()
+        elif(index == const.IDX_RIGHT):
+            move.right()
+        else:
+            pass
 
-        print("Score", score.get_score())
+    return score.get_score()
+
+def eval_genomes(genomes, config):
+    for genome_id, genome in genomes:
+        net = neat.nn.RecurrentNetwork.create(genome, config)
+        genome.fitness = cross_the_road(genome, net)
+
+def run(config_file):
+    # Load configuation
+    config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
+                         neat.DefaultSpeciesSet, neat.DefaultStagnation,
+                         config_file)
+
+    # Create the population, which is the top-level object for a NEAT run
+    p = neat.Population(config)
+
+    # Add a stdout reporter to show progress in the terminal.
+    p.add_reporter(neat.StdOutReporter(True))
+    stats = neat.StatisticsReporter()
+    p.add_reporter(stats)
+    p.add_reporter(neat.Checkpointer(5))
+
+    # Run for up to X generations.
+    winner = p.run(eval_genomes, const.NUM_GENERATIONS)
+
+    # Display the winning genome.
+    print('\nBest genome:\n{!s}'.format(winner))
+
+    # Show output of the most fit genome against training data.
+    print('\nOutput:')
+    winner_net = neat.nn.FeedForwardNetwork.create(winner, config)
+    # SHOW THE WINNER CAN DO!
+
+    # NAMES
+    node_names = {const.IDX_NOTHING:'NO MOVE', 
+                  const.IDX_FORWARD: 'FORWARD',
+                  const.IDX_BACKWARD: 'BACKWARD',
+                  const.IDX_LEFT: 'LEFT',
+                  const.IDX_RIGHT: 'RIGHT'}
+    visualize.draw_net(config, winner, True, node_names=node_names)
+    visualize.plot_stats(stats, ylog=False, view=True)
+    visualize.plot_species(stats, view=True)
+
+    p = neat.Checkpointer.restore_checkpoint('neat-checkpoint-4')
+    p.run(eval_genomes, 10)
+
+if __name__ == '__main__':
+    setup()
+
+    local_dir = os.getcwd()
+    config_path = os.path.join(local_dir, 'config-recurrent')
+    run(config_path)

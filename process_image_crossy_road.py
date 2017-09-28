@@ -102,8 +102,8 @@ if __name__ == '__main__':
 
         game_status, processed_img, processed_arr = process(raw_img)
 
-        print('fps: {0}'.format(1 / (time.time()-last_time)))
-        cv2.imshow('Processed Image', processed_img)
+        # print('fps: {0}'.format(1 / (time.time()-last_time)))
+        cv2.imshow('Processed Image', raw_img)
         # Press "q" to quit
         if cv2.waitKey(25) & 0xFF == ord('q'):
             cv2.destroyAllWindows()

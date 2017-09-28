@@ -1548,8 +1548,7 @@ static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
 static int __pyx_f_28process_image_crossy_road_cy_is_thing(PyObject *, __Pyx_memviewslice, int, int, int, int, int); /*proto*/
 static int __pyx_f_28process_image_crossy_road_cy_is_thing_helper(__Pyx_memviewslice, __Pyx_memviewslice); /*proto*/
-static int __pyx_f_28process_image_crossy_road_cy_is_empty(PyObject *, int, int, int, int); /*proto*/
-static int __pyx_f_28process_image_crossy_road_cy_is_empty_helper(__Pyx_memviewslice); /*proto*/
+static int __pyx_f_28process_image_crossy_road_cy_is_empty(int, int); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
 static void *__pyx_align_pointer(void *, size_t); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo *); /*proto*/
@@ -2163,7 +2162,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
  *     cdef int x, y, i
  *     for y in range(block_x // 2, rows, block_x):             # <<<<<<<<<<<<<<
  *         for x in range(block_y // 2, cols, block_y):
- *             if(is_empty(img,x,y,block_x,block_y)): continue
+ *             if(is_empty(x,y)): continue
  */
   __pyx_t_1 = __Pyx_PyInt_From_long(__Pyx_div_long(__pyx_v_block_x, 2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -2233,7 +2232,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
  *     cdef int x, y, i
  *     for y in range(block_x // 2, rows, block_x):
  *         for x in range(block_y // 2, cols, block_y):             # <<<<<<<<<<<<<<
- *             if(is_empty(img,x,y,block_x,block_y)): continue
+ *             if(is_empty(x,y)): continue
  *             elif(is_thing(img,color_list_simple,x,y,block_x,block_y,1)):
  */
     __pyx_t_3 = __Pyx_PyInt_From_long(__Pyx_div_long(__pyx_v_block_y, 2)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
@@ -2303,18 +2302,18 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
       /* "process_image_crossy_road_cy.pyx":16
  *     for y in range(block_x // 2, rows, block_x):
  *         for x in range(block_y // 2, cols, block_y):
- *             if(is_empty(img,x,y,block_x,block_y)): continue             # <<<<<<<<<<<<<<
+ *             if(is_empty(x,y)): continue             # <<<<<<<<<<<<<<
  *             elif(is_thing(img,color_list_simple,x,y,block_x,block_y,1)):
  *                 cv2.circle(img, (x, y), 3, [255, 0, 0], -1)
  */
-      __pyx_t_14 = (__pyx_f_28process_image_crossy_road_cy_is_empty(__pyx_v_img, __pyx_v_x, __pyx_v_y, __pyx_v_block_x, __pyx_v_block_y) != 0);
+      __pyx_t_14 = (__pyx_f_28process_image_crossy_road_cy_is_empty(__pyx_v_x, __pyx_v_y) != 0);
       if (__pyx_t_14) {
         goto __pyx_L7_continue;
       }
 
       /* "process_image_crossy_road_cy.pyx":17
  *         for x in range(block_y // 2, cols, block_y):
- *             if(is_empty(img,x,y,block_x,block_y)): continue
+ *             if(is_empty(x,y)): continue
  *             elif(is_thing(img,color_list_simple,x,y,block_x,block_y,1)):             # <<<<<<<<<<<<<<
  *                 cv2.circle(img, (x, y), 3, [255, 0, 0], -1)
  *                 arr.append(floor_num)
@@ -2323,7 +2322,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
       if (__pyx_t_14) {
 
         /* "process_image_crossy_road_cy.pyx":18
- *             if(is_empty(img,x,y,block_x,block_y)): continue
+ *             if(is_empty(x,y)): continue
  *             elif(is_thing(img,color_list_simple,x,y,block_x,block_y,1)):
  *                 cv2.circle(img, (x, y), 3, [255, 0, 0], -1)             # <<<<<<<<<<<<<<
  *                 arr.append(floor_num)
@@ -2428,7 +2427,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
 
         /* "process_image_crossy_road_cy.pyx":17
  *         for x in range(block_y // 2, cols, block_y):
- *             if(is_empty(img,x,y,block_x,block_y)): continue
+ *             if(is_empty(x,y)): continue
  *             elif(is_thing(img,color_list_simple,x,y,block_x,block_y,1)):             # <<<<<<<<<<<<<<
  *                 cv2.circle(img, (x, y), 3, [255, 0, 0], -1)
  *                 arr.append(floor_num)
@@ -2795,7 +2794,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
  *     cdef int x, y, i
  *     for y in range(block_x // 2, rows, block_x):
  *         for x in range(block_y // 2, cols, block_y):             # <<<<<<<<<<<<<<
- *             if(is_empty(img,x,y,block_x,block_y)): continue
+ *             if(is_empty(x,y)): continue
  *             elif(is_thing(img,color_list_simple,x,y,block_x,block_y,1)):
  */
       __pyx_L7_continue:;
@@ -2807,7 +2806,7 @@ static PyObject *__pyx_pf_28process_image_crossy_road_cy_binarify(CYTHON_UNUSED 
  *     cdef int x, y, i
  *     for y in range(block_x // 2, rows, block_x):             # <<<<<<<<<<<<<<
  *         for x in range(block_y // 2, cols, block_y):
- *             if(is_empty(img,x,y,block_x,block_y)): continue
+ *             if(is_empty(x,y)): continue
  */
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3615,177 +3614,113 @@ __pyx_t_11 = 2;
 /* "process_image_crossy_road_cy.pyx":70
  * 
  * @cython.boundscheck(False)
- * cdef bint is_empty(img, int x, int y, int block_x, int block_y):             # <<<<<<<<<<<<<<
- *     cdef unsigned char[:] pixel0, pixel1, pixel2, pixel3
- *     pixel0 = img[y][x + block_x // 2 - 1]
+ * cdef bint is_empty(int x, int y):             # <<<<<<<<<<<<<<
+ *     cdef float a = -0.3 * x + 63
+ *     cdef float b = 2.05 * x + 50
  */
 
-static int __pyx_f_28process_image_crossy_road_cy_is_empty(PyObject *__pyx_v_img, int __pyx_v_x, int __pyx_v_y, int __pyx_v_block_x, int __pyx_v_block_y) {
-  __Pyx_memviewslice __pyx_v_pixel0 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_pixel1 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_pixel2 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_pixel3 = { 0, 0, { 0 }, { 0 }, { 0 } };
+static int __pyx_f_28process_image_crossy_road_cy_is_empty(int __pyx_v_x, int __pyx_v_y) {
+  float __pyx_v_a;
+  float __pyx_v_b;
+  float __pyx_v_c;
+  float __pyx_v_d;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  long __pyx_t_2;
-  PyObject *__pyx_t_3 = NULL;
-  __Pyx_memviewslice __pyx_t_4 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  int __pyx_t_5;
-  int __pyx_t_6;
+  int __pyx_t_1;
   __Pyx_RefNannySetupContext("is_empty", 0);
 
-  /* "process_image_crossy_road_cy.pyx":72
- * cdef bint is_empty(img, int x, int y, int block_x, int block_y):
- *     cdef unsigned char[:] pixel0, pixel1, pixel2, pixel3
- *     pixel0 = img[y][x + block_x // 2 - 1]             # <<<<<<<<<<<<<<
- *     pixel1 = img[y][x - block_x // 2 - 1]
- *     pixel2 = img[y + block_y // 2 - 1][x]
+  /* "process_image_crossy_road_cy.pyx":71
+ * @cython.boundscheck(False)
+ * cdef bint is_empty(int x, int y):
+ *     cdef float a = -0.3 * x + 63             # <<<<<<<<<<<<<<
+ *     cdef float b = 2.05 * x + 50
+ *     cdef float c = -0.28 * x + 537
  */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_img, __pyx_v_y, int, 1, __Pyx_PyInt_From_int, 0, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = ((__pyx_v_x + __Pyx_div_long(__pyx_v_block_x, 2)) - 1);
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 72, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_4 = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char(__pyx_t_3);
-  if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 72, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_pixel0 = __pyx_t_4;
-  __pyx_t_4.memview = NULL;
-  __pyx_t_4.data = NULL;
+  __pyx_v_a = ((-0.3 * __pyx_v_x) + 63.0);
+
+  /* "process_image_crossy_road_cy.pyx":72
+ * cdef bint is_empty(int x, int y):
+ *     cdef float a = -0.3 * x + 63
+ *     cdef float b = 2.05 * x + 50             # <<<<<<<<<<<<<<
+ *     cdef float c = -0.28 * x + 537
+ *     cdef float d = 2.05 * x - 460
+ */
+  __pyx_v_b = ((2.05 * __pyx_v_x) + 50.0);
 
   /* "process_image_crossy_road_cy.pyx":73
- *     cdef unsigned char[:] pixel0, pixel1, pixel2, pixel3
- *     pixel0 = img[y][x + block_x // 2 - 1]
- *     pixel1 = img[y][x - block_x // 2 - 1]             # <<<<<<<<<<<<<<
- *     pixel2 = img[y + block_y // 2 - 1][x]
- *     pixel3 = img[y - block_y // 2 - 1][x]
+ *     cdef float a = -0.3 * x + 63
+ *     cdef float b = 2.05 * x + 50
+ *     cdef float c = -0.28 * x + 537             # <<<<<<<<<<<<<<
+ *     cdef float d = 2.05 * x - 460
+ * 
  */
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_img, __pyx_v_y, int, 1, __Pyx_PyInt_From_int, 0, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 73, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = ((__pyx_v_x - __Pyx_div_long(__pyx_v_block_x, 2)) - 1);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_4 = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char(__pyx_t_1);
-  if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 73, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_pixel1 = __pyx_t_4;
-  __pyx_t_4.memview = NULL;
-  __pyx_t_4.data = NULL;
+  __pyx_v_c = ((-0.28 * __pyx_v_x) + 537.0);
 
   /* "process_image_crossy_road_cy.pyx":74
- *     pixel0 = img[y][x + block_x // 2 - 1]
- *     pixel1 = img[y][x - block_x // 2 - 1]
- *     pixel2 = img[y + block_y // 2 - 1][x]             # <<<<<<<<<<<<<<
- *     pixel3 = img[y - block_y // 2 - 1][x]
+ *     cdef float b = 2.05 * x + 50
+ *     cdef float c = -0.28 * x + 537
+ *     cdef float d = 2.05 * x - 460             # <<<<<<<<<<<<<<
  * 
+ *     if(y < a): return True
  */
-  __pyx_t_2 = ((__pyx_v_y + __Pyx_div_long(__pyx_v_block_y, 2)) - 1);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_img, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 0, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 74, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_4 = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char(__pyx_t_3);
-  if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 74, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_pixel2 = __pyx_t_4;
-  __pyx_t_4.memview = NULL;
-  __pyx_t_4.data = NULL;
+  __pyx_v_d = ((2.05 * __pyx_v_x) - 460.0);
 
-  /* "process_image_crossy_road_cy.pyx":75
- *     pixel1 = img[y][x - block_x // 2 - 1]
- *     pixel2 = img[y + block_y // 2 - 1][x]
- *     pixel3 = img[y - block_y // 2 - 1][x]             # <<<<<<<<<<<<<<
+  /* "process_image_crossy_road_cy.pyx":76
+ *     cdef float d = 2.05 * x - 460
  * 
- *     if(is_empty_helper(pixel0) and is_empty_helper(pixel1) and
+ *     if(y < a): return True             # <<<<<<<<<<<<<<
+ *     if(y > b): return True
+ *     if(y > c): return True
  */
-  __pyx_t_2 = ((__pyx_v_y - __Pyx_div_long(__pyx_v_block_y, 2)) - 1);
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_img, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 75, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 0, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_4 = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char(__pyx_t_1);
-  if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 75, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_pixel3 = __pyx_t_4;
-  __pyx_t_4.memview = NULL;
-  __pyx_t_4.data = NULL;
+  __pyx_t_1 = ((__pyx_v_y < __pyx_v_a) != 0);
+  if (__pyx_t_1) {
+    __pyx_r = 1;
+    goto __pyx_L0;
+  }
 
   /* "process_image_crossy_road_cy.pyx":77
- *     pixel3 = img[y - block_y // 2 - 1][x]
  * 
- *     if(is_empty_helper(pixel0) and is_empty_helper(pixel1) and             # <<<<<<<<<<<<<<
- *             is_empty_helper(pixel2) and is_empty_helper(pixel3)):
- *         return True
+ *     if(y < a): return True
+ *     if(y > b): return True             # <<<<<<<<<<<<<<
+ *     if(y > c): return True
+ *     if(y < d): return True
  */
-  __pyx_t_6 = (__pyx_f_28process_image_crossy_road_cy_is_empty_helper(__pyx_v_pixel0) != 0);
-  if (__pyx_t_6) {
-  } else {
-    __pyx_t_5 = __pyx_t_6;
-    goto __pyx_L4_bool_binop_done;
-  }
-  __pyx_t_6 = (__pyx_f_28process_image_crossy_road_cy_is_empty_helper(__pyx_v_pixel1) != 0);
-  if (__pyx_t_6) {
-  } else {
-    __pyx_t_5 = __pyx_t_6;
-    goto __pyx_L4_bool_binop_done;
+  __pyx_t_1 = ((__pyx_v_y > __pyx_v_b) != 0);
+  if (__pyx_t_1) {
+    __pyx_r = 1;
+    goto __pyx_L0;
   }
 
   /* "process_image_crossy_road_cy.pyx":78
- * 
- *     if(is_empty_helper(pixel0) and is_empty_helper(pixel1) and
- *             is_empty_helper(pixel2) and is_empty_helper(pixel3)):             # <<<<<<<<<<<<<<
- *         return True
+ *     if(y < a): return True
+ *     if(y > b): return True
+ *     if(y > c): return True             # <<<<<<<<<<<<<<
+ *     if(y < d): return True
  * 
  */
-  __pyx_t_6 = (__pyx_f_28process_image_crossy_road_cy_is_empty_helper(__pyx_v_pixel2) != 0);
-  if (__pyx_t_6) {
-  } else {
-    __pyx_t_5 = __pyx_t_6;
-    goto __pyx_L4_bool_binop_done;
+  __pyx_t_1 = ((__pyx_v_y > __pyx_v_c) != 0);
+  if (__pyx_t_1) {
+    __pyx_r = 1;
+    goto __pyx_L0;
   }
-  __pyx_t_6 = (__pyx_f_28process_image_crossy_road_cy_is_empty_helper(__pyx_v_pixel3) != 0);
-  __pyx_t_5 = __pyx_t_6;
-  __pyx_L4_bool_binop_done:;
 
-  /* "process_image_crossy_road_cy.pyx":77
- *     pixel3 = img[y - block_y // 2 - 1][x]
- * 
- *     if(is_empty_helper(pixel0) and is_empty_helper(pixel1) and             # <<<<<<<<<<<<<<
- *             is_empty_helper(pixel2) and is_empty_helper(pixel3)):
- *         return True
- */
-  if (__pyx_t_5) {
-
-    /* "process_image_crossy_road_cy.pyx":79
- *     if(is_empty_helper(pixel0) and is_empty_helper(pixel1) and
- *             is_empty_helper(pixel2) and is_empty_helper(pixel3)):
- *         return True             # <<<<<<<<<<<<<<
+  /* "process_image_crossy_road_cy.pyx":79
+ *     if(y > b): return True
+ *     if(y > c): return True
+ *     if(y < d): return True             # <<<<<<<<<<<<<<
  * 
  *     return False
  */
+  __pyx_t_1 = ((__pyx_v_y < __pyx_v_d) != 0);
+  if (__pyx_t_1) {
     __pyx_r = 1;
     goto __pyx_L0;
-
-    /* "process_image_crossy_road_cy.pyx":77
- *     pixel3 = img[y - block_y // 2 - 1][x]
- * 
- *     if(is_empty_helper(pixel0) and is_empty_helper(pixel1) and             # <<<<<<<<<<<<<<
- *             is_empty_helper(pixel2) and is_empty_helper(pixel3)):
- *         return True
- */
   }
 
   /* "process_image_crossy_road_cy.pyx":81
- *         return True
+ *     if(y < d): return True
  * 
  *     return False             # <<<<<<<<<<<<<<
- * 
- * @cython.boundscheck(False)
  */
   __pyx_r = 0;
   goto __pyx_L0;
@@ -3793,92 +3728,9 @@ static int __pyx_f_28process_image_crossy_road_cy_is_empty(PyObject *__pyx_v_img
   /* "process_image_crossy_road_cy.pyx":70
  * 
  * @cython.boundscheck(False)
- * cdef bint is_empty(img, int x, int y, int block_x, int block_y):             # <<<<<<<<<<<<<<
- *     cdef unsigned char[:] pixel0, pixel1, pixel2, pixel3
- *     pixel0 = img[y][x + block_x // 2 - 1]
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_3);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
-  __Pyx_WriteUnraisable("process_image_crossy_road_cy.is_empty", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __PYX_XDEC_MEMVIEW(&__pyx_v_pixel0, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_v_pixel1, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_v_pixel2, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_v_pixel3, 1);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "process_image_crossy_road_cy.pyx":84
- * 
- * @cython.boundscheck(False)
- * cdef bint is_empty_helper(unsigned char[:] pixel):             # <<<<<<<<<<<<<<
- *     if(pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0): return True
- * 
- */
-
-static int __pyx_f_28process_image_crossy_road_cy_is_empty_helper(__Pyx_memviewslice __pyx_v_pixel) {
-  int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  Py_ssize_t __pyx_t_2;
-  int __pyx_t_3;
-  Py_ssize_t __pyx_t_4;
-  Py_ssize_t __pyx_t_5;
-  __Pyx_RefNannySetupContext("is_empty_helper", 0);
-
-  /* "process_image_crossy_road_cy.pyx":85
- * @cython.boundscheck(False)
- * cdef bint is_empty_helper(unsigned char[:] pixel):
- *     if(pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0): return True             # <<<<<<<<<<<<<<
- * 
- *     return False
- */
-  __pyx_t_2 = 0;
-  if (__pyx_t_2 < 0) __pyx_t_2 += __pyx_v_pixel.shape[0];
-  __pyx_t_3 = (((*((unsigned char *) ( /* dim=0 */ (__pyx_v_pixel.data + __pyx_t_2 * __pyx_v_pixel.strides[0]) ))) == 0) != 0);
-  if (__pyx_t_3) {
-  } else {
-    __pyx_t_1 = __pyx_t_3;
-    goto __pyx_L4_bool_binop_done;
-  }
-  __pyx_t_4 = 1;
-  if (__pyx_t_4 < 0) __pyx_t_4 += __pyx_v_pixel.shape[0];
-  __pyx_t_3 = (((*((unsigned char *) ( /* dim=0 */ (__pyx_v_pixel.data + __pyx_t_4 * __pyx_v_pixel.strides[0]) ))) == 0) != 0);
-  if (__pyx_t_3) {
-  } else {
-    __pyx_t_1 = __pyx_t_3;
-    goto __pyx_L4_bool_binop_done;
-  }
-  __pyx_t_5 = 2;
-  if (__pyx_t_5 < 0) __pyx_t_5 += __pyx_v_pixel.shape[0];
-  __pyx_t_3 = (((*((unsigned char *) ( /* dim=0 */ (__pyx_v_pixel.data + __pyx_t_5 * __pyx_v_pixel.strides[0]) ))) == 0) != 0);
-  __pyx_t_1 = __pyx_t_3;
-  __pyx_L4_bool_binop_done:;
-  if (__pyx_t_1) {
-    __pyx_r = 1;
-    goto __pyx_L0;
-  }
-
-  /* "process_image_crossy_road_cy.pyx":87
- *     if(pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0): return True
- * 
- *     return False             # <<<<<<<<<<<<<<
- */
-  __pyx_r = 0;
-  goto __pyx_L0;
-
-  /* "process_image_crossy_road_cy.pyx":84
- * 
- * @cython.boundscheck(False)
- * cdef bint is_empty_helper(unsigned char[:] pixel):             # <<<<<<<<<<<<<<
- *     if(pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0): return True
- * 
+ * cdef bint is_empty(int x, int y):             # <<<<<<<<<<<<<<
+ *     cdef float a = -0.3 * x + 63
+ *     cdef float b = 2.05 * x + 50
  */
 
   /* function exit code */

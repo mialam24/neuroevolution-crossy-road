@@ -13,7 +13,7 @@ def binarify(img, int block_x, int block_y,
     cdef int x, y, i
     for y in range(block_x // 2, rows, block_x):
         for x in range(block_y // 2, cols, block_y):
-            if(is_empty(img,x,y,block_x,block_y)): continue
+            if(is_empty(x,y)): continue
             elif(is_thing(img,color_list_simple,x,y,block_x,block_y,1)):
                 cv2.circle(img, (x, y), 3, [255, 0, 0], -1) 
                 arr.append(floor_num)
@@ -67,21 +67,15 @@ cdef bint is_thing_helper(unsigned char[:] pixel, int[:,:] color_list):
     return False
 
 @cython.boundscheck(False)
-cdef bint is_empty(img, int x, int y, int block_x, int block_y):
-    cdef unsigned char[:] pixel0, pixel1, pixel2, pixel3
-    pixel0 = img[y][x + block_x // 2 - 1]
-    pixel1 = img[y][x - block_x // 2 - 1]
-    pixel2 = img[y + block_y // 2 - 1][x]
-    pixel3 = img[y - block_y // 2 - 1][x]
+cdef bint is_empty(int x, int y):
+    cdef float a = -0.3 * x + 63
+    cdef float b = 2.05 * x + 50
+    cdef float c = -0.28 * x + 537
+    cdef float d = 2.05 * x - 460
 
-    if(is_empty_helper(pixel0) and is_empty_helper(pixel1) and
-            is_empty_helper(pixel2) and is_empty_helper(pixel3)): 
-        return True
-    
-    return False
-
-@cython.boundscheck(False)
-cdef bint is_empty_helper(unsigned char[:] pixel):
-    if(pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0): return True
+    if(y < a): return True
+    if(y > b): return True
+    if(y > c): return True
+    if(y < d): return True
 
     return False
