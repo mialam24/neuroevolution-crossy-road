@@ -131,9 +131,9 @@ def visualize_info(config_path, num = 0):
                   const.IDX_LEFT: 'LEFT',
                   const.IDX_RIGHT: 'RIGHT'}
 
-    with open('stats-' + str(num), 'rb') as s:
+    with open('trial-0/stats-' + str(num), 'rb') as s:
         stats = pickle.load(s)
-    with open('winner-' + str(num), 'rb') as w:
+    with open('trial-0/winner-' + str(num), 'rb') as w:
         winner = pickle.load(w)
 
     visualize.draw_net(config, winner, True, node_names=node_names)
@@ -142,7 +142,8 @@ def visualize_info(config_path, num = 0):
 
 if __name__ == '__main__':
     local_dir = os.getcwd()
-    config_path = os.path.join(local_dir, 'neat-config')
-    setup()
-    run(config_path)
-    # visualize_info(config_path, 4)
+    # config_path = os.path.join(local_dir, 'neat-config')
+    # setup()
+    # run(config_path)
+    config_path = os.path.join(local_dir, 'trial-0/neat-config')
+    visualize_info(config_path, 4)
