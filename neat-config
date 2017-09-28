@@ -3,14 +3,14 @@
 [NEAT]
 fitness_criterion     = max
 fitness_threshold     = 1000
-pop_size              = 10
+pop_size              = 50
 reset_on_extinction   = False
 
 [DefaultGenome]
 # node activation options
-activation_default      = sigmoid
+activation_default      = relu
 activation_mutate_rate  = 0.0
-activation_options      = sigmoid
+activation_options      = relu
 
 # node aggregation options
 aggregation_default     = sum
@@ -38,7 +38,7 @@ conn_delete_prob        = 0.5
 enabled_default         = True
 enabled_mutate_rate     = 0.01
 
-feed_forward            = False
+feed_forward            = True
 initial_connection      = full_nodirect
 
 # node add/remove rates
@@ -79,3 +79,4 @@ species_elitism      = 2
 [DefaultReproduction]
 elitism            = 2
 survival_threshold = 0.2
+min_species_size   = 5

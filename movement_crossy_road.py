@@ -38,6 +38,7 @@ def backward():
     global last_move_time
     time_since_last_move = time.time() - last_move_time
     if(time_since_last_move >= const.MOVE_TIME):
+        pyautogui.click(x = const.PLAY_BUTTON_X, y = const.PLAY_BUTTON_Y)
         pyautogui.keyDown('down')
         time.sleep(const.PRESS_TIME)
         pyautogui.keyUp('down')
