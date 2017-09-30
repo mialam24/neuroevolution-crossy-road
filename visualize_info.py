@@ -27,6 +27,6 @@ def visualize_info(config_file, num = 0):
     visualize.plot_species(stats, view=True)
 
 if __name__ == '__main__':
-    num = 217
+    num = 415
     config_file = 'neat-config'
     visualize_info(config_file, num)

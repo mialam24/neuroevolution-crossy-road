@@ -13,13 +13,17 @@ def load_training_data():
 
 def eval_genomes(genomes, config):
     for genome_id, genome in genomes:
-        genome.fitness = 50.0
+        genome.fitness = 20000.0
         net = neat.nn.RecurrentNetwork.create(genome, config)
         for i in range(len(training_input)):
             output = net.activate(training_input[i])
             for j in range(len(output)):
-                fitness_less = (output[j] - training_output[i][j]) ** 2
-                genome.fitness -= fitness_less * 0.001
+                try:
+                    fitness_less = (int(output[j]) - training_output[i][j]) ** 2
+                    genome.fitness -= fitness_less
+                except:
+                    print("Why overflow?")
+                    print(output[j], fitness_less)
 
 def run(config_file):
     # Load configuation
@@ -34,17 +38,23 @@ def run(config_file):
     p.add_reporter(neat.StdOutReporter(True))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
-    p.add_reporter(neat.Checkpointer(10))
+    p.add_reporter(neat.Checkpointer(50))
 
     for gen_num in range(const.NUM_GENERATIONS):
-        winner = p.run(eval_genomes, 1)
+        while True:
+            try:
+                winner = p.run(eval_genomes, 1)
 
-        # Save winner and stats
-        with open('winner-' + str(gen_num) + '.pkl', 'wb') as f:
-            pickle.dump(winner, f)
+                # Save winner and stats
+                with open('winner-' + str(gen_num) + '.pkl', 'wb') as f:
+                    pickle.dump(winner, f)
 
-        with open('stats.pkl', 'wb') as f:
-            pickle.dump(stats, f)
+                with open('stats.pkl', 'wb') as f:
+                    pickle.dump(stats, f)
+            except:
+                print("WHY OVERFLOW") # Neat Python does not catch it
+            else:
+                break
 
 if __name__ == '__main__':
     config_file = 'neat-config'

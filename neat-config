@@ -1,8 +1,8 @@
 #--- parameters for the crossy road experiment ---
 
 [NEAT]
-fitness_criterion     = max
-fitness_threshold     = 48.5
+fitness_criterion     = mean
+fitness_threshold     = 19500
 pop_size              = 100
 reset_on_extinction   = False
 
@@ -72,7 +72,7 @@ weight_replace_rate     = 0.1
 compatibility_threshold = 3.0
 
 [DefaultStagnation]
-species_fitness_func = max
+species_fitness_func = mean
 max_stagnation       = 50
 species_elitism      = 2
 

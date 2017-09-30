@@ -1,7 +1,7 @@
 import numpy as np
 
 # Constants
-NUM_GENERATIONS = 1000
+NUM_GENERATIONS = 10000
 
 TRAINING_INPUT = 'training-input.pkl'
 TRAINING_OUTPUT = 'training-output.pkl'
