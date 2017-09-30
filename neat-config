@@ -1,9 +1,9 @@
-#--- parameters for the crossy road experiment ---2
+#--- parameters for the crossy road experiment ---
 
 [NEAT]
 fitness_criterion     = max
-fitness_threshold     = 1000
-pop_size              = 50
+fitness_threshold     = 48.5
+pop_size              = 100
 reset_on_extinction   = False
 
 [DefaultGenome]
@@ -38,15 +38,15 @@ conn_delete_prob        = 0.5
 enabled_default         = True
 enabled_mutate_rate     = 0.01
 
-feed_forward            = True
-initial_connection      = full_nodirect
+feed_forward            = False
+initial_connection      = unconnected
 
 # node add/remove rates
 node_add_prob           = 0.2
 node_delete_prob        = 0.2
 
 # network parameters
-num_hidden              = 5
+num_hidden              = 0
 num_inputs              = 153
 num_outputs             = 5
 
@@ -73,10 +73,10 @@ compatibility_threshold = 3.0
 
 [DefaultStagnation]
 species_fitness_func = max
-max_stagnation       = 20
+max_stagnation       = 50
 species_elitism      = 2
 
 [DefaultReproduction]
-elitism            = 2
+elitism            = 0
 survival_threshold = 0.2
-min_species_size   = 5
+min_species_size   = 10

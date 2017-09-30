@@ -47,7 +47,7 @@ def backward():
 def restart():
     pyautogui.click(x = const.PLAY_BUTTON_X, y = const.PLAY_BUTTON_Y)
     time.sleep(const.WAIT_SCREEN)
-    forward()
+    pyautogui.click(x = const.PLAY_BUTTON_X, y = const.PLAY_BUTTON_Y)
 
 def escape():
     pyautogui.keyDown('esc')

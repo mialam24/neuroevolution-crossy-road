@@ -1,13 +1,9 @@
 import time
 import numpy as np
 import cv2
-from scipy import misc
 import mss
-import pickle
 
-import os
 import neat
-import visualize
 
 import constants_crossy_road as const
 import movement_crossy_road as move
@@ -16,6 +12,7 @@ import score_crossy_road as score
 
 sct = mss.mss()
 gen_num = 0
+individual_num = 0
 
 def setup():
     while(True):
@@ -24,6 +21,7 @@ def setup():
         raw_img = np.array(sct.grab(const.MONITOR))
         raw_img = raw_img[:, :, 0:3]
         _, processed_img, _ = process_image.process(raw_img)
+        processed_img = cv2.copyMakeBorder(processed_img, 5, 5, 5, 5, cv2.BORDER_CONSTANT, value=[255, 255, 255])
         
         cv2.imshow('Processed Image', processed_img)
         if cv2.waitKey(25) & 0xFF == ord('q'):
@@ -35,6 +33,7 @@ def setup():
 
 def cross_the_road(genome_id, net):
     global gen_num
+    global individual_num
     time.sleep(3)
     move.restart()
 
@@ -45,13 +44,21 @@ def cross_the_road(genome_id, net):
         raw_img = raw_img[:, :, 0:3]
 
         game_status, processed_img, network_input = process_image.process(raw_img)
+        processed_img = cv2.copyMakeBorder(processed_img, 5, 5, 5, 5, cv2.BORDER_CONSTANT, value=[255, 255, 255])
         cv2.rectangle(processed_img, 
-                (0,493), (441, 493 - 25), 
+                (0, 493 - 16), (193, 493 - 16 - 25), 
+                [255, 255, 255], -1)
+        cv2.rectangle(processed_img, 
+                (0,493 + 5), (449, 493 - 16), 
                 [255, 255, 255], -1)
         cv2.putText(processed_img,
-                "Generation: " + str(gen_num) + 
+                "Generation: " + str(gen_num), 
+                (10,493 - 21), cv2.FONT_HERSHEY_COMPLEX_SMALL, 
+                1, [0, 0, 0], 2)
+        cv2.putText(processed_img,
+                "Individual: " + str(individual_num) + 
                 " Genome ID: " + str(genome_id), 
-                (5,493 - 5), cv2.FONT_HERSHEY_COMPLEX_SMALL, 
+                (10,493), cv2.FONT_HERSHEY_COMPLEX_SMALL, 
                 1, [0, 0, 0], 2)
         cv2.imshow('Processed Image', processed_img)
         # Press "q" to quit
@@ -81,69 +88,31 @@ def cross_the_road(genome_id, net):
     return score.get_score()
 
 def eval_genomes(genomes, config):
+    global individual_num
     for genome_id, genome in genomes:
         net = neat.nn.FeedForwardNetwork.create(genome, config)
         genome.fitness = cross_the_road(genome_id, net)
+        individual_num += 1
 
-def run(config_file):
+def run(config_file, num):
     global gen_num
+    global individual_num
 
     # Load configuation
     config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
                          neat.DefaultSpeciesSet, neat.DefaultStagnation,
                          config_file)
 
-    # Create the population, which is the top-level object for a NEAT run
-    p = neat.Population(config)
-
-    # Add a stdout reporter to show progress in the terminal.
-    p.add_reporter(neat.StdOutReporter(True))
-    stats = neat.StatisticsReporter()
-    p.add_reporter(stats)
-    p.add_reporter(neat.Checkpointer(1))
+    p = neat.Checkpointer.restore_checkpoint('neat-checkpoint-' + str(num))
 
     for i in range(const.NUM_GENERATIONS):
-        # Run for 1 generation at a time.
-        winner = p.run(eval_genomes, 1)
-
-        # Save winner and stats
-        with open('winner-' + str(i), 'wb') as f:
-            pickle.dump(winner, f)
-
-        with open('stats-' + str(i), 'wb') as f:
-            pickle.dump(stats, f)
+        p.run(eval_genomes, 1)
 
         gen_num += 1
-
-def visualize_info(config_path, num = 0):
-    # checkpoint_name = "neat-checkpoint-" + str(num)
-    # p = neat.Checkpointer.restore_checkpoint(checkpoint_name)
-
-    # Load configuation
-    config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
-                         neat.DefaultSpeciesSet, neat.DefaultStagnation,
-                         config_path)
-
-    # NAMES
-    node_names = {const.IDX_NOTHING:'NO MOVE', 
-                  const.IDX_FORWARD: 'FORWARD',
-                  const.IDX_BACKWARD: 'BACKWARD',
-                  const.IDX_LEFT: 'LEFT',
-                  const.IDX_RIGHT: 'RIGHT'}
-
-    with open('trial-0/stats-' + str(num), 'rb') as s:
-        stats = pickle.load(s)
-    with open('trial-0/winner-' + str(num), 'rb') as w:
-        winner = pickle.load(w)
-
-    visualize.draw_net(config, winner, True, node_names=node_names)
-    visualize.plot_stats(stats, ylog=False, view=True)
-    visualize.plot_species(stats, view=True)
+        individual_num = 0
 
 if __name__ == '__main__':
-    local_dir = os.getcwd()
-    # config_path = os.path.join(local_dir, 'neat-config')
-    # setup()
-    # run(config_path)
-    config_path = os.path.join(local_dir, 'trial-0/neat-config')
-    visualize_info(config_path, 4)
+    num = 209
+    config_file = 'neat-config'
+    setup()
+    run(config_file, num)
