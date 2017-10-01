@@ -3643,7 +3643,7 @@ static int __pyx_f_28process_image_crossy_road_cy_is_empty(int __pyx_v_x, int __
  *     cdef float a = -0.3 * x + 63
  *     cdef float b = 2.05 * x + 50             # <<<<<<<<<<<<<<
  *     cdef float c = -0.28 * x + 537
- *     cdef float d = 2.05 * x - 460
+ *     cdef float d = 2.05 * x - 480
  */
   __pyx_v_b = ((2.05 * __pyx_v_x) + 50.0);
 
@@ -3651,7 +3651,7 @@ static int __pyx_f_28process_image_crossy_road_cy_is_empty(int __pyx_v_x, int __
  *     cdef float a = -0.3 * x + 63
  *     cdef float b = 2.05 * x + 50
  *     cdef float c = -0.28 * x + 537             # <<<<<<<<<<<<<<
- *     cdef float d = 2.05 * x - 460
+ *     cdef float d = 2.05 * x - 480
  * 
  */
   __pyx_v_c = ((-0.28 * __pyx_v_x) + 537.0);
@@ -3659,14 +3659,14 @@ static int __pyx_f_28process_image_crossy_road_cy_is_empty(int __pyx_v_x, int __
   /* "process_image_crossy_road_cy.pyx":74
  *     cdef float b = 2.05 * x + 50
  *     cdef float c = -0.28 * x + 537
- *     cdef float d = 2.05 * x - 460             # <<<<<<<<<<<<<<
+ *     cdef float d = 2.05 * x - 480             # <<<<<<<<<<<<<<
  * 
  *     if(y < a): return True
  */
-  __pyx_v_d = ((2.05 * __pyx_v_x) - 460.0);
+  __pyx_v_d = ((2.05 * __pyx_v_x) - 480.0);
 
   /* "process_image_crossy_road_cy.pyx":76
- *     cdef float d = 2.05 * x - 460
+ *     cdef float d = 2.05 * x - 480
  * 
  *     if(y < a): return True             # <<<<<<<<<<<<<<
  *     if(y > b): return True

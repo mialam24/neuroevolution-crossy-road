@@ -71,7 +71,7 @@ cdef bint is_empty(int x, int y):
     cdef float a = -0.3 * x + 63
     cdef float b = 2.05 * x + 50
     cdef float c = -0.28 * x + 537
-    cdef float d = 2.05 * x - 460
+    cdef float d = 2.05 * x - 480
 
     if(y < a): return True
     if(y > b): return True

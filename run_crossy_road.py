@@ -2,17 +2,19 @@ import time
 import numpy as np
 import cv2
 import mss
+import pickle
 
 import neat
 
 import constants_crossy_road as const
 import movement_crossy_road as move
 import process_image_crossy_road as process_image
+import process_input_crossy_road as process_input
 import score_crossy_road as score
 
 sct = mss.mss()
 gen_num = 0
-individual_num = 0
+individual_num = 1
 
 def setup():
     while(True):
@@ -38,12 +40,10 @@ def cross_the_road(genome_id, net):
     move.restart()
 
     while(True):
-        last_time = time.time()
-    
         raw_img = np.array(sct.grab(const.MONITOR))
         raw_img = raw_img[:, :, 0:3]
 
-        game_status, processed_img, network_input = process_image.process(raw_img)
+        game_status, processed_img, processed_arr = process_image.process(raw_img)
         processed_img = cv2.copyMakeBorder(processed_img, 5, 5, 5, 5, cv2.BORDER_CONSTANT, value=[255, 255, 255])
         cv2.rectangle(processed_img, 
                 (0, 493 - 16), (193, 493 - 16 - 25), 
@@ -71,6 +71,7 @@ def cross_the_road(genome_id, net):
         if(game_status != const.GAME_STATUS_PLAYING):
             break
         
+        network_input = process_input.process(processed_arr)
         network_output = net.activate(network_input)
         index = network_output.index(max(network_output))
         
@@ -90,11 +91,11 @@ def cross_the_road(genome_id, net):
 def eval_genomes(genomes, config):
     global individual_num
     for genome_id, genome in genomes:
-        net = neat.nn.FeedForwardNetwork.create(genome, config)
+        net = neat.nn.RecurrentNetwork.create(genome, config)
         genome.fitness = cross_the_road(genome_id, net)
         individual_num += 1
 
-def run(config_file, num):
+def run(config_file):
     global gen_num
     global individual_num
 
@@ -103,16 +104,29 @@ def run(config_file, num):
                          neat.DefaultSpeciesSet, neat.DefaultStagnation,
                          config_file)
 
-    p = neat.Checkpointer.restore_checkpoint('neat-checkpoint-' + str(num))
+    # Create the population, which is the top-level object for a NEAT run
+    p = neat.Population(config)
 
-    for i in range(const.NUM_GENERATIONS):
-        p.run(eval_genomes, 1)
+    # Add a stdout reporter to show progress in the terminal.
+    p.add_reporter(neat.StdOutReporter(True))
+    stats = neat.StatisticsReporter()
+    p.add_reporter(stats)
+    p.add_reporter(neat.Checkpointer(1))
+
+    for gen_num in range(const.NUM_GENERATIONS):
+        winner = p.run(eval_genomes, 1)
+
+        # Save winner and stats
+        with open('winner-' + str(gen_num), 'wb') as f:
+            pickle.dump(winner, f)
+
+        with open('stats', 'wb') as f:
+            pickle.dump(stats, f)
 
         gen_num += 1
-        individual_num = 0
+        individual_num = 1
 
 if __name__ == '__main__':
-    num = 209
     config_file = 'neat-config'
     setup()
-    run(config_file, num)
+    run(config_file)
